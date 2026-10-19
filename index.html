@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Los Hijos de Villa | Parrilla de Barrio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --amarillo: #F5C518;
+      --rojo: #D92323;
+      --carbon: #0D0C0C;
+      --gris-oscuro: #181616;
+      --texto: #F5F5F5;
+      --cafe: #3A2314;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--carbon);
+      color: var(--texto);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Navegación */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(13, 12, 12, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 2px solid rgba(245, 197, 24, 0.2);
+    }
+
+    .logo-nav {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--amarillo);
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: var(--texto);
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--amarillo);
+    }
+
+    /* Hero con Canvas de Fuego */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      background: radial-gradient(circle at center, #2b1108 0%, var(--carbon) 75%);
+      overflow: hidden;
+    }
+
+    #fireCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+      animation: fadeInDown 1.2s ease-out;
+    }
+
+    .badge-logo {
+      width: 130px;
+      height: 130px;
+      background: var(--amarillo);
+      color: var(--cafe);
+      border-radius: 50%;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem;
+      line-height: 1;
+      margin-bottom: 20px;
+      box-shadow: 0 0 35px rgba(245, 197, 24, 0.5);
+      border: 3px solid var(--rojo);
+    }
+
+    .badge-logo span {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      color: var(--amarillo);
+      letter-spacing: 3px;
+      line-height: 0.95;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      margin: 20px auto 35px;
+      max-width: 650px;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    .btn-cta {
+      display: inline-block;
+      background: linear-gradient(45deg, var(--rojo), #ff5100);
+      color: #fff;
+      padding: 16px 38px;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 50px;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 25px rgba(217, 35, 35, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 35px rgba(245, 197, 24, 0.6);
+    }
+
+    /* Secciones */
+    section {
+      padding: 90px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--amarillo);
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 55px;
+      font-size: 1rem;
+    }
+
+    /* Grid de Servicios */
+    .grid-servicios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--gris-oscuro);
+      border: 1px solid rgba(245, 197, 24, 0.15);
+      border-radius: 16px;
+      padding: 35px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: var(--amarillo);
+      box-shadow: 0 15px 35px rgba(217, 35, 35, 0.2);
+    }
+
+    .tag-minimo {
+      display: inline-block;
+      background: rgba(245, 197, 24, 0.15);
+      color: var(--amarillo);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .card p {
+      color: #ccc;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .precio-box {
+      border-top: 1px dashed rgba(255,255,255,0.15);
+      padding-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .precio-placeholder {
+      font-weight: 800;
+      color: var(--amarillo);
+      font-size: 1rem;
+    }
+
+    .btn-card {
+      color: #fff;
+      background: var(--rojo);
+      padding: 8px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-card:hover {
+      background: #b51b1b;
+    }
+
+    /* Horarios y Contacto */
+    .info-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      background: var(--gris-oscuro);
+      padding: 45px;
+      border-radius: 20px;
+      border: 1px solid rgba(245, 197, 24, 0.2);
+    }
+
+    .horario-lista {
+      list-style: none;
+      margin-top: 15px;
+    }
+
+    .horario-lista li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.95rem;
+    }
+
+    .redes-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .red-btn {
+      background: #252222;
+      color: var(--amarillo);
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid rgba(245, 197, 24, 0.3);
+      transition: all 0.3s;
+    }
+
+    .red-btn:hover {
+      background: var(--amarillo);
+      color: var(--carbon);
+    }
+
+    /* Botón Flotante WhatsApp */
+    .wa-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 50px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.3s;
+    }
+
+    .wa-float:hover {
+      transform: scale(1.08);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.85rem;
+      color: #777;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="logo-nav">LOS HIJOS DE VILLA</a>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#salsa">Salsa Macha</a>
+      <a href="#contacto">Horarios y Contacto</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <canvas id="fireCanvas"></canvas>
+    <div class="hero-content">
+      <div class="badge-logo">
+        LOS HIJOS<br>DE VILLA
+        <span>🌶️🌶️</span>
+        <span>PARRILLA DE BARRIO</span>
+      </div>
+      <h1>EL ARTE DEL ASADO EN TU EVENTO</h1>
+      <p>Servicio profesional y especializado en asados y parrilladas a domicilio, eventos sociales, corporativos y talleres de integración empresarial.</p>
+      <a href="https://wa.me/5510455547" target="_blank" class="btn-cta">Solicitar Cotización por WhatsApp</a>
+    </div>
+  </header>
+
+  <section id="servicios">
+    <h2 class="section-title">NUESTRAS EXPERIENCIAS EN PARRILLA</h2>
+    <p class="section-subtitle">Carne certificada nacional e internacional llevada hasta donde tú nos digas</p>
+
+    <div class="grid-servicios">
+      <!-- Servicio 1 -->
+      <div class="card">
+        <span class="tag-minimo">A partir de 40 personas</span>
+        <h3>Parrilladas a Domicilio</h3>
+        <p>Transforma cualquier ocasión en un festín memorable. Servicio privado para celebraciones familiares, eventos sociales y corporativos.</p>
+        <div class="precio-box">
+          <span class="precio-placeholder">Precio: Por definir</span>
+          <a href="https://wa.me/5510455547" target="_blank" class="btn-card">Cotizar</a>
+        </div>
+      </div>
+
+      <!-- Servicio 2 -->
+      <div class="card">
+        <span class="tag-minimo">Tradicional y Exótico</span>
+        <h3>Asado Criollo</h3>
+        <p>Experiencia culinaria excepcional con jabalí, búfalo, venado, armadillo, cordero, cabrito o lechón, acompañados de guarniciones y salsa macha.</p>
+        <div class="precio-box">
+          <span class="precio-placeholder">Precio: Por definir</span>
+          <a href="https://wa.me/5510455547" target="_blank" class="btn-card">Cotizar</a>
+        </div>
+      </div>
+
+      <!-- Servicio 3 -->
+      <div class="card">
+        <span class="tag-minimo">A partir de 10 personas</span>
+        <h3>Entregas a Domicilio</h3>
+        <p>Mandamos hasta tu hogar todo el sabor del asado listo para disfrutar. Solicita nuestros menús exclusivos para modalidad de entrega.</p>
+        <div class="precio-box">
+          <span class="precio-placeholder">Precio: Por definir</span>
+          <a href="https://wa.me/5510455547" target="_blank" class="btn-card">Pedir Menú</a>
+        </div>
+      </div>
+
+      <!-- Servicio 4 -->
+      <div class="card">
+        <span class="tag-minimo">Eventos Informales</span>
+        <h3>Hamburguesas y Sándwiches</h3>
+        <p>Desde irresistibles opciones de ahumados hasta jugosas creaciones a la parrilla para satisfacer los antojos de todos tus invitados.</p>
+        <div class="precio-box">
+          <span class="precio-placeholder">Precio: Por definir</span>
+          <a href="https://wa.me/5510455547" target="_blank" class="btn-card">Cotizar</a>
+        </div>
+      </div>
+
+      <!-- Servicio 5 -->
+      <div class="card" id="salsa">
+        <span class="tag-minimo">Las Hijas de Villa</span>
+        <h3>Salsa Macha Artesanal</h3>
+        <p>Producto artesanal elaborado a mano. Lleva a tu mesa la herencia y una explosión de sabores auténticos.</p>
+        <div class="precio-box">
+          <span class="precio-placeholder">Precio: Por definir</span>
+          <a href="https://wa.me/5510455547" target="_blank" class="btn-card">Ordenar</a>
+        </div>
+      </div>
+
+      <!-- Servicio 6 -->
+      <div class="card">
+        <span class="tag-minimo">Corporativo</span>
+        <h3>Talleres de Integración</h3>
+        <p>Diseñamos talleres de integración empresarial alrededor del fuego que fortalecen equipos y generan experiencias auténticas.</p>
+        <div class="precio-box">
+          <span class="precio-placeholder">Precio: Por definir</span>
+          <a href="https://wa.me/5510455547" target="_blank" class="btn-card">Cotizar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2 class="section-title">HORARIOS Y CONTACTO</h2>
+    <p class="section-subtitle">Estamos listos para hacerlo realidad contigo</p>
+
+    <div class="info-container">
+      <div>
+        <h3 style="color: var(--amarillo); margin-bottom: 10px;">Horario de Atención</h3>
+        <ul class="horario-lista">
+          <li><span>Lunes a Viernes</span> <strong>9:00 am - 11:00 pm</strong></li>
+          <li><span>Sábado</span> <strong>11:00 am - 10:00 pm</strong></li>
+          <li><span>Domingo</span> <strong>11:00 am - 7:00 pm</strong></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 style="color: var(--amarillo); margin-bottom: 10px;">Canales Oficiales</h3>
+        <p style="color: #ccc; margin-bottom: 15px;">Teléfono / WhatsApp: <strong>+52 1 55 1045 5547</strong></p>
+        <div class="redes-grid">
+          <a href="https://wa.me/5510455547" target="_blank" class="red-btn">WhatsApp Business</a>
+          <a href="#" class="red-btn">Instagram (@lhdv.nz)</a>
+          <a href="#" class="red-btn">Facebook</a>
+          <a href="#" class="red-btn">TikTok</a>
+          <a href="#" class="red-btn">Threads</a>
+          <a href="#" class="red-btn">Spotify</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/5510455547" target="_blank" class="wa-float">
+    🔥 Cotizar por WhatsApp
+  </a>
+
+  <footer>
+    <p>© 2026 Los Hijos de Villa - Parrilla de Barrio. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // 1. Animación de brasas/chispas en el Hero
+    const canvas = document.getElementById('fireCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    for (let i = 0; i < 65; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 3 + 1,
+        speedY: Math.random() * 1.5 + 0.5,
+        speedX: (Math.random() - 0.5) * 0.8,
+        color: Math.random() > 0.5 ? '#F5C518' : '#D92323',
+        alpha: Math.random()
+      });
+    }
+
+    function animateFire() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.fillStyle = p.color;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        p.y -= p.speedY;
+        p.x += p.speedX;
+        if (p.y < 0) {
+          p.y = canvas.height;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(animateFire);
+    }
+    animateFire();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // 2. Animación Scroll Reveal para las tarjetas
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>
