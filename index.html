@@ -19,6 +19,8 @@
 
   <!-- Textura sutil de carbón -->
   <div class="noise-overlay"></div>
+  <!-- Brasas de fuego en TODA la página -->
+  <canvas id="fireCanvas" aria-hidden="true"></canvas>
 
   <!-- Navegación -->
   <nav>
@@ -29,12 +31,14 @@
         <span class="nav-sub">PARRILLA DE BARRIO</span>
       </div>
     </a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
     <div class="nav-links">
       <a href="#tablon">Tablón y Ferias</a>
       <a href="#paquetes">Menús y Precios</a>
       <a href="#cotizador">Cotizador</a>
       <a href="#experiencias">Catálogo</a>
       <a href="#contacto">Contacto</a>
+      <a href="#nosotros">Nosotros</a>
     </div>
   </nav>
 
@@ -42,8 +46,7 @@
   <header class="hero">
     <!-- Guarda tu foto de los cortes colgados como 'fondo-asador.jpg' en la misma carpeta -->
     <div class="hero-bg-photo"></div>
-    <canvas id="fireCanvas"></canvas>
-
+    
     <div class="hero-content">
       <div class="badge-logo">
         <img src="logo.png" alt="Los Hijos de Villa" class="hero-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -57,7 +60,7 @@
       <h1 class="tilted-title">EL ARTE DEL ASADO<br>EN TU EVENTO</h1>
       <p>Llevamos la excelencia de nuestra parrilla con leña de encino, carbón y carne Calidad Prime Sonorense a tus celebraciones familiares, eventos corporativos y talleres de integración.</p>
       <div class="hero-btns">
-        <a href="https://wa.me/loshijosdevilla" target="_blank" rel="noopener noreferrer" class="btn-cta">Cotizar mi Evento en WhatsApp</a>
+        <a href="https://wa.me/525510455547" target="_blank" rel="noopener noreferrer" class="btn-cta">Cotizar mi Evento en WhatsApp</a>
         <a href="#paquetes" class="btn-outline">Ver Paquetes y Precios ↓</a>
       </div>
     </div>
@@ -96,14 +99,14 @@
         <div class="pin-badge">🎁 PROMOCIÓN EXCLUSIVA</div>
         <h3>Beneficio al Reservar tu Fecha</h3>
         <p>Aparta la fecha de tu servicio con un depósito inicial (aplicable al monto final total) y solicita la promoción especial que tenemos disponible para tu evento.</p>
-        <a href="https://wa.me/5510455547?text=Hola,%20quiero%20conocer%20la%20promoción%20vigente%20para%20reservar%20mi%20evento" target="_blank" rel="noopener noreferrer" class="pin-link">Reclamar promoción por WhatsApp →</a>
+        <a href="https://wa.me/525510455547?text=Hola,%20quiero%20conocer%20la%20promoción%20vigente%20para%20reservar%20mi%20evento" target="_blank" rel="noopener noreferrer" class="pin-link">Reclamar promoción por WhatsApp →</a>
       </div>
 
       <div class="pin-card">
         <div class="pin-badge">🌶️ HECHO A MANO</div>
         <h3>Salsa Macha "Las Hijas de Villa"</h3>
         <p>Lleva a tu mesa la herencia y explosión de sabores auténticos de nuestra salsa artesanal elaborada 100% a mano.</p>
-        <a href="https://wa.me/5510455547?text=Hola,%20me%20interesa%20pedir%20Salsa%20Macha%20Las%20Hijas%20de%20Villa" target="_blank" rel="noopener noreferrer" class="pin-link">Ordenar frascos a domicilio →</a>
+        <a href="https://wa.me/525510455547?text=Hola,%20me%20interesa%20pedir%20Salsa%20Macha%20Las%20Hijas%20de%20Villa" target="_blank" rel="noopener noreferrer" class="pin-link">Ordenar frascos a domicilio →</a>
       </div>
     </div>
   </section>
@@ -269,17 +272,10 @@
             <span class="pulse-dot"></span>
             <span>ASÍ SE VIVE NUESTRA PARRILLA</span>
           </div>
-          <div class="tiktok-Wrapper">
-            <iframe
-              src="https://www.tiktok.com/player/v1/7318148079218199813?music_info=0&description=0&rel=0"
-              allow="fullscreen; autoplay; encrypted-media"
-              loading="lazy"
-              title="Preparación y Cortes Los Hijos de Villa">
-            </iframe>
-          </div>
+          <div class="tiktok-Wrapper" data-video="parrilla"></div>
           <div class="video-caption">
             <p>Montaje profesional, leña de encino y cortes jugosos servidos al momento.</p>
-            <a href="https://www.tiktok.com/@lhdv.nz/video/7318148079218199813" target="_blank" rel="noopener noreferrer">Ver en TikTok @lhdv.nz ↗</a>
+            <a id="link-parrilla" href="https://www.tiktok.com/@lhdv.nz/video/7318148079218199813" target="_blank" rel="noopener noreferrer">Ver en TikTok @lhdv.nz ↗</a>
           </div>
         </div>
       </aside>
@@ -298,17 +294,10 @@
             <span class="pulse-dot"></span>
             <span>EVENTOS Y EXPERIENCIAS EN VIVO</span>
           </div>
-          <div class="tiktok-Wrapper">
-            <iframe
-              src="https://www.tiktok.com/player/v1/7514926604406000901?music_info=0&description=0&rel=0"
-              allow="fullscreen; autoplay; encrypted-media"
-              loading="lazy"
-              title="Eventos Los Hijos de Villa">
-            </iframe>
-          </div>
+          <div class="tiktok-Wrapper" data-video="eventos"></div>
           <div class="video-caption">
             <p>Calidad, fuego y sabor inconfundible en reuniones sociales y empresariales.</p>
-            <a href="https://www.tiktok.com/@lhdv.nz/video/7514926604406000901" target="_blank" rel="noopener noreferrer">Ver en TikTok @lhdv.nz ↗</a>
+            <a id="link-eventos" href="https://www.tiktok.com/@lhdv.nz/video/7514926604406000901" target="_blank" rel="noopener noreferrer">Ver en TikTok @lhdv.nz ↗</a>
           </div>
         </div>
       </aside>
@@ -363,28 +352,28 @@
         <span class="tag-minimo">Tradicional y Exótico</span>
         <h3>Asado Criollo al Asador</h3>
         <p>Desde cortes tradicionales hasta carnes exóticas: jabalí, búfalo, venado, armadillo, cordero, cabrito o lechón, acompañados de guarniciones y salsas macha.</p>
-        <a href="https://wa.me/5510455547?text=Hola,%20me%20interesa%20cotizar%20un%20Asado%20Criollo" target="_blank" rel="noopener noreferrer" class="btn-card">Cotizar Asado Criollo</a>
+        <a href="https://wa.me/525510455547?text=Hola,%20me%20interesa%20cotizar%20un%20Asado%20Criollo" target="_blank" rel="noopener noreferrer" class="btn-card">Cotizar Asado Criollo</a>
       </div>
 
       <div class="card">
         <span class="tag-minimo">A partir de 10 personas</span>
         <h3>Entregas a Domicilio</h3>
         <p>Mandamos hasta la puerta de tu casa todo el sabor del asado listo para servir en la mesa. Solicita nuestros menús exclusivos solo para entrega.</p>
-        <a href="https://wa.me/5510455547?text=Hola,%20quiero%20los%20menús%20de%20Entrega%20a%20Domicilio" target="_blank" rel="noopener noreferrer" class="btn-card">Solicitar Menús de Entrega</a>
+        <a href="https://wa.me/525510455547?text=Hola,%20quiero%20los%20menús%20de%20Entrega%20a%20Domicilio" target="_blank" rel="noopener noreferrer" class="btn-card">Solicitar Menús de Entrega</a>
       </div>
 
       <div class="card">
         <span class="tag-minimo">Eventos Informales</span>
         <h3>Hamburguesas y Sándwiches</h3>
         <p>Opciones de ahumados y jugosas creaciones a la parrilla ideales para disfrutar de una comida informal e inolvidable con tus invitados.</p>
-        <a href="https://wa.me/5510455547?text=Hola,%20me%20interesa%20el%20menú%20de%20Hamburguesas%20y%20Sándwiches" target="_blank" rel="noopener noreferrer" class="btn-card">Cotizar Hamburguesas</a>
+        <a href="https://wa.me/525510455547?text=Hola,%20me%20interesa%20el%20menú%20de%20Hamburguesas%20y%20Sándwiches" target="_blank" rel="noopener noreferrer" class="btn-card">Cotizar Hamburguesas</a>
       </div>
 
       <div class="card">
         <span class="tag-minimo">Corporativo</span>
         <h3>Talleres de Integración</h3>
         <p>Experiencias culinarias alrededor del fuego diseñadas para empresas que buscan fortalecer equipos de alto nivel en un ambiente auténtico.</p>
-        <a href="https://wa.me/5510455547?text=Hola,%20me%20interesa%20información%20sobre%20los%20Talleres%20de%20Integración%20Empresarial" target="_blank" rel="noopener noreferrer" class="btn-card">Cotizar Taller Empresarial</a>
+        <a href="https://wa.me/525510455547?text=Hola,%20me%20interesa%20información%20sobre%20los%20Talleres%20de%20Integración%20Empresarial" target="_blank" rel="noopener noreferrer" class="btn-card">Cotizar Taller Empresarial</a>
       </div>
     </div>
   </section>
@@ -408,7 +397,7 @@
         <p style="color: #ccc; margin-bottom: 18px;">WhatsApp y Teléfono Directo: <strong>+52 1 55 1045 5547</strong></p>
 
         <div class="redes-grid">
-          <a href="https://wa.me/loshijosdevilla" target="_blank" rel="noopener noreferrer" class="red-btn social-wa">
+          <a href="https://wa.me/525510455547" target="_blank" rel="noopener noreferrer" class="red-btn social-wa">
             <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.126.556 4.122 1.529 5.854l-1.529 5.586 5.724-1.501c1.685.918 3.619 1.441 5.676 1.441 6.627 0 12-5.373 12-12s-5.373-12-11.4-11.38z"/></svg>
             <span>WhatsApp</span>
           </a>
@@ -442,13 +431,37 @@
     </div>
   </section>
 
+  <!-- Más sobre nosotros -->
+  <section id="nosotros" class="nosotros-section">
+    <div class="nosotros-grid">
+      <div class="marco-madera">
+        <div class="foto">
+          <!-- Sube tu foto familiar como 'foto-familia.jpg' en la carpeta del proyecto -->
+          <img src="foto-familia.jpg" alt="Familia Los Hijos de Villa junto al asador" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="foto-fallback">Aquí va la foto de la familia 📸<br><small>foto-familia.jpg</small></div>
+        </div>
+      </div>
+      <div class="nosotros-texto">
+        <span class="eyebrow">NUESTRA HISTORIA</span>
+        <h2 class="title-left">MÁS SOBRE <span class="cursive-inline">Nosotros</span></h2>
+        <p class="leyenda">"Lo que se hace en familia, se cocina a fuego lento."</p>
+        <p>Somos un negocio familiar. Aprendimos a asar alrededor del fuego, entre parientes y vecinos, y hoy llevamos esa misma parrilla de barrio a tu evento: leña de encino, carbón y mucho sabor.</p>
+        <p>Cada corte lo atendemos como si fuera para nuestra propia mesa. Esa es la promesa de Los Hijos de Villa.</p>
+        <a href="https://wa.me/525510455547?text=Hola,%20quiero%20cotizar%20mi%20evento" target="_blank" rel="noopener noreferrer" class="btn-cta">Platiquemos de tu evento</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Botón Flotante de WhatsApp -->
-  <a href="https://wa.me/loshijosdevilla" target="_blank" rel="noopener noreferrer" class="wa-float">
+  <a href="https://wa.me/525510455547" target="_blank" rel="noopener noreferrer" class="wa-float">
     <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor">
       <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.126.556 4.122 1.529 5.854l-1.529 5.586 5.724-1.501c1.685.918 3.619 1.441 5.676 1.441 6.627 0 12-5.373 12-12s-5.373-12-11.4-11.38z"/>
     </svg>
     <span>Cotizar en WhatsApp</span>
   </a>
+
+  <!-- Parrilla con carbón encendido -->
+  <div class="parrilla-footer" aria-hidden="true"><div class="brasas"></div><div class="rejilla"></div></div>
 
   <footer>
     <p>© 2026 Los Hijos de Villa - Parrilla de Barrio. Todas las imágenes y contenidos son propiedad de la marca.</p>

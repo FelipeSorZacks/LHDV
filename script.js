@@ -1,6 +1,8 @@
-// 1. Animación de brasas y chispas en el Hero
+// 1. Brasas y chispas en TODA la página (canvas fijo)
 const canvas = document.getElementById('fireCanvas');
 const ctx = canvas.getContext('2d');
+const esMovil = window.matchMedia('(max-width: 700px)').matches;
+const reducirMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function resizeCanvas() {
   canvas.width = window.innerWidth;
@@ -9,39 +11,78 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-const particles = Array.from({ length: 65 }, () => ({
-  x: Math.random() * canvas.width,
-  y: Math.random() * canvas.height,
-  size: Math.random() * 3 + 1,
-  speedY: Math.random() * 1.4 + 0.4,
-  speedX: (Math.random() - 0.5) * 0.8,
-  color: Math.random() > 0.45 ? '#F5C518' : '#D92323',
-  alpha: Math.random() * 0.8 + 0.2
-}));
+function nuevaParticula(inicio) {
+  return {
+    x: Math.random() * canvas.width,
+    y: inicio ? Math.random() * canvas.height : canvas.height + 10,
+    size: Math.random() * 2.6 + 0.8,
+    speedY: Math.random() * 1.2 + 0.4,
+    speedX: (Math.random() - 0.5) * 0.7,
+    color: Math.random() > 0.45 ? '#F5C518' : '#D92323',
+    alpha: Math.random() * 0.6 + 0.25
+  };
+}
+const particles = Array.from({ length: esMovil ? 32 : 70 }, () => nuevaParticula(true));
 
 function animateFire() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => {
-    ctx.save();
+  particles.forEach((p, i) => {
     ctx.globalAlpha = p.alpha;
     ctx.fillStyle = p.color;
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = p.color;
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
     ctx.fill();
-    ctx.restore();
-
-    p.y -= p.speedY;
-    p.x += p.speedX;
-    if (p.y < 0) {
-      p.y = canvas.height;
-      p.x = Math.random() * canvas.width;
+    if (!esMovil) { // halo suave (en celular se omite para ahorrar batería)
+      ctx.globalAlpha = p.alpha * 0.25;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * 2.6, 0, Math.PI * 2);
+      ctx.fill();
     }
+    p.y -= p.speedY;
+    p.x += p.speedX + Math.sin(p.y / 40) * 0.25;
+    if (p.y < -10) particles[i] = nuevaParticula(false);
   });
+  ctx.globalAlpha = 1;
   requestAnimationFrame(animateFire);
 }
-animateFire();
+if (!reducirMovimiento) animateFire();
+
+// Menú hamburguesa (celular)
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+navToggle.addEventListener('click', () => {
+  const abierto = navLinks.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', abierto);
+  navToggle.textContent = abierto ? '✕' : '☰';
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+  navToggle.textContent = '☰';
+}));
+
+// =====================================================
+// VIDEOS DE TIKTOK — para actualizarlos solo cambia estos dos links
+// (pega el link completo del video, o solo el número del final)
+// =====================================================
+const VIDEOS_TIKTOK = {
+  parrilla: 'https://www.tiktok.com/@lhdv.nz/video/7690756409776016658',
+  eventos:  'https://www.tiktok.com/@lhdv.nz/video/7662564778237381906'
+};
+
+document.querySelectorAll('.tiktok-Wrapper[data-video]').forEach(caja => {
+  const link = VIDEOS_TIKTOK[caja.dataset.video] || '';
+  const id = (link.match(/video\/(\d+)/) || link.match(/^(\d+)$/) || [])[1];
+  if (!id) return;
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://www.tiktok.com/player/v1/${id}?loop=1&autoplay=1&music_info=0&description=0&rel=0`;
+  iframe.allow = 'fullscreen; autoplay; encrypted-media';
+  iframe.loading = 'lazy';
+  iframe.title = 'Video de Los Hijos de Villa en TikTok';
+  caja.appendChild(iframe);
+  const enlace = document.getElementById('link-' + caja.dataset.video);
+  if (enlace && link.startsWith('http')) enlace.href = link;
+});
 
 // 2. Sistema de Pestañas (Parrilla Clásica vs Parrilla Tradicional)
 const tabButtons = document.querySelectorAll('.tab-btn');
@@ -125,7 +166,7 @@ function actualizarCotizacion() {
   const detalleExtras = extrasTexto.length > 0 ? ` con extras (${extrasTexto.join(', ')})` : '';
   const mensaje = `Hola Los Hijos de Villa, me interesa cotizar el *Paquete ${nombrePaquete}* para *${personas} personas*${detalleExtras}. Presupuesto estimado en web: $${totalEvento.toLocaleString('es-MX')} MXN.`;
 
-  btnEnviarCotizacion.href = `https://wa.me/5510455547?text=${encodeURIComponent(mensaje)}`;
+  btnEnviarCotizacion.href = `https://wa.me/525510455547?text=${encodeURIComponent(mensaje)}`;
 }
 
 selectPaquete.addEventListener('change', actualizarCotizacion);
