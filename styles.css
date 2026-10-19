@@ -2,9 +2,9 @@
   --amarillo: #F5C518;
   --rojo: #D92323;
   --verde-parrilla: #7CC529;
-  --carbon: #0D0C0C;
-  --gris-oscuro: #171515;
-  --gris-tarjeta: #201D1D;
+  --carbon: #0B0A0A;
+  --madera-oscura: #141110;
+  --gris-tarjeta: #1C1817;
   --texto: #F5F5F5;
   --cafe: #3A2314;
 }
@@ -21,6 +21,52 @@ body {
   color: var(--texto);
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(217, 35, 35, 0.06), transparent 35%),
+    radial-gradient(circle at 85% 30%, rgba(245, 197, 24, 0.05), transparent 35%);
+}
+
+/* Textura sutil tipo carbón */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.03;
+  background-image: radial-gradient(#ffffff 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Tipografía Cursiva estilo Flyers Los Hijos de Villa */
+.cursive-accent {
+  font-family: 'Yellowtail', cursive;
+  color: var(--amarillo);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  display: block;
+  margin-bottom: 6px;
+  transform: rotate(-2deg);
+}
+
+.cursive-inline {
+  font-family: 'Yellowtail', cursive;
+  color: var(--amarillo);
+  font-weight: 400;
+  text-transform: none;
+  font-size: 1.05em;
+  margin-left: 6px;
+}
+
+.cursive-btn {
+  font-family: 'Yellowtail', cursive;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 1.15em;
+  margin-left: 4px;
+}
+
+.tilted-title {
+  transform: rotate(-1deg);
+  text-shadow: 4px 6px 0px #3A1508, 0 10px 30px rgba(0, 0, 0, 0.95);
 }
 
 /* Navegación */
@@ -32,10 +78,10 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(13, 12, 12, 0.92);
-  backdrop-filter: blur(12px);
+  background: rgba(11, 10, 10, 0.92);
+  backdrop-filter: blur(14px);
   z-index: 1000;
-  border-bottom: 2px solid rgba(245, 197, 24, 0.25);
+  border-bottom: 1px solid rgba(245, 197, 24, 0.25);
 }
 
 .logo-nav {
@@ -43,25 +89,38 @@ nav {
   align-items: center;
   gap: 12px;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2rem;
+  font-size: 1.9rem;
   color: var(--amarillo);
   letter-spacing: 2px;
   text-decoration: none;
+  line-height: 0.9;
+}
+
+.nav-sub {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.62rem;
+  color: #ccc;
+  letter-spacing: 2.5px;
+  font-weight: 700;
 }
 
 .nav-logo-img {
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid var(--amarillo);
 }
 
 .nav-links a {
   color: var(--texto);
   text-decoration: none;
   margin-left: 22px;
-  font-weight: 600;
-  font-size: 0.88rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
   transition: color 0.3s;
 }
 
@@ -69,7 +128,7 @@ nav {
   color: var(--amarillo);
 }
 
-/* Hero con Canvas */
+/* Hero con Fotografía Semitransparente de Cortes al Fuego + Brasas */
 .hero {
   position: relative;
   min-height: 92vh;
@@ -77,37 +136,56 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 100px 20px 60px;
-  background: radial-gradient(circle at center, #2e1107 0%, var(--carbon) 75%);
+  padding: 115px 20px 75px;
+  background: radial-gradient(circle at center, #3b1406 0%, var(--carbon) 78%);
   overflow: hidden;
+}
+
+/* Si guardas tu foto de los cortes colgados como 'fondo-asador.jpg', se verá aquí con efecto ahumado */
+.hero-bg-photo {
+  position: absolute;
+  inset: 0;
+  background-image: url('fondo-asador.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.28;
+  filter: contrast(1.15) saturate(1.2);
+  z-index: 0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11,10,10,0.55) 0%, rgba(11,10,10,0.35) 50%, var(--carbon) 100%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 #fireCanvas {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 }
 
 .hero-content {
   position: relative;
-  z-index: 2;
-  max-width: 850px;
-  animation: fadeInDown 1s ease-out;
+  z-index: 3;
+  max-width: 860px;
 }
 
 .badge-logo {
-  width: 145px;
-  height: 145px;
-  margin: 0 auto 22px;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 18px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 35px rgba(245, 197, 24, 0.5);
+  box-shadow: 0 0 40px rgba(245, 197, 24, 0.5);
   overflow: hidden;
   background: var(--amarillo);
   border: 3px solid var(--rojo);
@@ -127,177 +205,352 @@ nav {
   color: var(--cafe);
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.7rem;
-  line-height: 1;
+  line-height: 0.95;
 }
 
 .badge-fallback span {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   letter-spacing: 1px;
   margin-top: 3px;
 }
 
 .hero h1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3.2rem, 7vw, 6rem);
-  color: var(--amarillo);
-  letter-spacing: 3px;
-  line-height: 0.95;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
+  font-size: clamp(3.4rem, 7.5vw, 6.2rem);
+  color: #ffffff;
+  letter-spacing: 2px;
+  line-height: 0.92;
 }
 
 .hero p {
-  font-size: 1.1rem;
-  margin: 20px auto 35px;
-  max-width: 680px;
-  color: #e0e0e0;
-  line-height: 1.6;
+  font-size: 1.08rem;
+  margin: 22px auto 34px;
+  max-width: 660px;
+  color: #e2e2e2;
+  line-height: 1.65;
+}
+
+.hero-btns {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .btn-cta {
   display: inline-block;
   background: linear-gradient(45deg, var(--rojo), #ff5500);
   color: #fff;
-  padding: 16px 36px;
+  padding: 16px 34px;
   font-weight: 800;
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 50px;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   box-shadow: 0 8px 25px rgba(217, 35, 35, 0.5);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.25s, box-shadow 0.25s;
 }
 
 .btn-cta:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 12px 35px rgba(245, 197, 24, 0.6);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(245, 197, 24, 0.55);
 }
 
-/* Secciones Generales */
-section {
-  padding: 80px 7%;
-}
-
-.section-title {
+.full-width-btn {
+  width: 100%;
   text-align: center;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 3.3rem;
+}
+
+.btn-outline {
+  display: inline-block;
+  border: 2px solid var(--amarillo);
   color: var(--amarillo);
-  letter-spacing: 2px;
-  margin-bottom: 8px;
+  padding: 14px 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.25s;
 }
 
-.section-subtitle {
-  text-align: center;
-  color: #b5b5b5;
-  margin-bottom: 45px;
-  font-size: 1rem;
+.btn-outline:hover {
+  background: var(--amarillo);
+  color: var(--carbon);
 }
 
-/* TABLÓN DE ANUNCIOS Y OFERTAS */
-.tablon-section {
-  background: linear-gradient(180deg, #161210 0%, var(--carbon) 100%);
-  border-top: 2px dashed rgba(245, 197, 24, 0.35);
-  border-bottom: 2px dashed rgba(245, 197, 24, 0.35);
-  padding: 65px 7%;
-}
-
-.tablon-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-
-.tablon-header h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.8rem;
+/* Cinta Marquee */
+.marquee-bar {
+  background: var(--rojo);
   color: #fff;
+  padding: 12px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 2px solid var(--amarillo);
+  border-bottom: 2px solid var(--amarillo);
+}
+
+.marquee-track {
+  display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.35rem;
   letter-spacing: 2px;
+  animation: marqueeMove 28s linear infinite;
+}
+
+.marquee-track .sep {
+  color: var(--amarillo);
+  margin: 0 18px;
+}
+
+@keyframes marqueeMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Secciones y Encabezados */
+section {
+  padding: 80px 5%;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--verde-parrilla);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.title-left, .title-with-brush {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+  color: #fff;
+  letter-spacing: 1.5px;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.title-left::after, .title-with-brush::after {
+  content: "";
+  display: block;
+  width: 110px;
+  height: 5px;
+  background: var(--amarillo);
+  margin-top: 8px;
+  transform: skewX(-20deg);
+}
+
+.lead-text {
+  color: #bbb;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 720px;
+}
+
+/* TABLÓN DE FERIAS Y OFERTAS */
+.tablon-section {
+  background: var(--madera-oscura);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.section-header-left {
+  max-width: 1320px;
+  margin: 0 auto 35px;
+}
+
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--amarillo);
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
 }
 
 .pulse-dot {
-  width: 14px;
-  height: 14px;
+  width: 10px;
+  height: 10px;
   background-color: var(--rojo);
   border-radius: 50%;
-  box-shadow: 0 0 12px var(--rojo);
+  box-shadow: 0 0 10px var(--rojo);
   animation: pulse 1.5s infinite;
+  flex-shrink: 0;
 }
 
 .tablon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 25px;
+  gap: 24px;
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
 .pin-card {
   background: var(--gris-tarjeta);
-  border-left: 5px solid var(--amarillo);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 4px solid var(--amarillo);
   border-radius: 12px;
-  padding: 25px;
-  position: relative;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 28px 24px;
+  transition: transform 0.3s ease;
+}
+
+.featured-pin {
+  border-top-color: var(--verde-parrilla);
+  background: linear-gradient(160deg, #221d1a 0%, #171413 100%);
 }
 
 .pin-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(245, 197, 24, 0.15);
+  transform: translateY(-5px);
 }
 
 .pin-badge {
   display: inline-block;
-  background: var(--rojo);
-  color: #fff;
+  background: rgba(245, 197, 24, 0.15);
+  color: var(--amarillo);
   font-size: 0.72rem;
   font-weight: 800;
   padding: 4px 10px;
-  border-radius: 6px;
+  border-radius: 4px;
   margin-bottom: 12px;
-  letter-spacing: 0.8px;
+  letter-spacing: 1px;
 }
 
 .pin-card h3 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
-  color: var(--amarillo);
+  font-size: 1.85rem;
+  color: #fff;
   margin-bottom: 10px;
   letter-spacing: 1px;
 }
 
 .pin-card p {
   font-size: 0.92rem;
-  color: #ddd;
-  line-height: 1.5;
-  margin-bottom: 15px;
+  color: #ccc;
+  line-height: 1.55;
+  margin-bottom: 16px;
 }
 
-.pin-meta, .pin-link {
+.pin-link {
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--verde-parrilla);
   text-decoration: none;
 }
 
-/* PAQUETES CON PESTAÑAS */
+/* =========================================================
+   PROPORCIÓN CORREGIDA: 3/4 INFORMACIÓN (1fr) Y 1/4 VIDEO (280px)
+   ========================================================= */
+.split-layout-right-video {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 38px;
+  align-items: start;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.split-layout-left-video {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 38px;
+  align-items: start;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.split-main {
+  width: 100%;
+  min-width: 0;
+}
+
+.video-sidebar {
+  position: sticky;
+  top: 88px;
+  width: 280px;
+  max-width: 280px;
+  justify-self: center;
+}
+
+.video-frame {
+  background: var(--gris-tarjeta);
+  border: 2px solid rgba(245, 197, 24, 0.45);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(217, 35, 35, 0.2);
+}
+
+.video-frame-header {
+  background: #120f0e;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 1.2px;
+  color: var(--amarillo);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Formato 9:16 exacto de teléfono vertical para evitar bordes borrosos */
+.tiktok-Wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  max-height: 495px;
+  background: #000;
+  overflow: hidden;
+}
+
+.tiktok-Wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.video-caption {
+  padding: 12px 14px;
+  text-align: center;
+  background: #141110;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.video-caption p {
+  font-size: 0.8rem;
+  color: #ccc;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.video-caption a {
+  color: var(--amarillo);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* PAQUETES Y PESTAÑAS */
 .tabs-paquetes {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 35px;
+  gap: 15px;
+  margin-bottom: 25px;
   flex-wrap: wrap;
 }
 
 .tab-btn {
-  background: var(--gris-oscuro);
+  background: var(--madera-oscura);
   color: #fff;
-  border: 2px solid rgba(245, 197, 24, 0.3);
-  padding: 14px 30px;
+  border: 2px solid rgba(245, 197, 24, 0.35);
+  padding: 12px 26px;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.45rem;
   letter-spacing: 1.5px;
-  border-radius: 50px;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -306,16 +559,15 @@ section {
   background: var(--amarillo);
   color: var(--carbon);
   border-color: var(--amarillo);
-  box-shadow: 0 0 25px rgba(245, 197, 24, 0.4);
+  box-shadow: 0 6px 20px rgba(245, 197, 24, 0.35);
 }
 
 .paquete-panel {
   display: none;
-  background: var(--gris-oscuro);
+  background: var(--madera-oscura);
   border: 1px solid rgba(245, 197, 24, 0.25);
   border-radius: 20px;
-  padding: 40px;
-  animation: fadeIn 0.5s ease;
+  padding: 32px;
 }
 
 .paquete-panel.active {
@@ -329,27 +581,28 @@ section {
   flex-wrap: wrap;
   gap: 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 25px;
-  margin-bottom: 30px;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .paquete-intro h3 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2.6rem;
   color: #fff;
-  margin: 8px 0;
+  margin: 5px 0;
 }
 
 .paquete-intro p {
-  max-width: 720px;
+  max-width: 640px;
   color: #ccc;
   line-height: 1.6;
+  font-size: 0.94rem;
 }
 
 .servicio-badge {
   background: rgba(124, 197, 41, 0.12);
   border: 1px solid var(--verde-parrilla);
-  padding: 15px 22px;
+  padding: 12px 18px;
   border-radius: 12px;
   text-align: center;
 }
@@ -357,32 +610,32 @@ section {
 .servicio-badge strong {
   display: block;
   color: var(--verde-parrilla);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
 }
 
 .servicio-badge span {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #ccc;
 }
 
 .menu-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  margin-bottom: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 26px;
 }
 
 .menu-box {
   background: var(--gris-tarjeta);
-  padding: 22px;
+  padding: 18px;
   border-radius: 14px;
-  border-top: 3px solid var(--amarillo);
+  border-left: 3px solid var(--amarillo);
 }
 
 .menu-box h4 {
   color: var(--amarillo);
-  font-size: 1.05rem;
-  margin-bottom: 12px;
+  font-size: 0.98rem;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
 
@@ -391,83 +644,90 @@ section {
 }
 
 .menu-box ul li {
-  font-size: 0.9rem;
-  color: #ddd;
+  font-size: 0.88rem;
+  color: #e0e0e0;
   padding: 6px 0;
   border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
 }
 
-/* Precios en Grid */
+.sub-precios {
+  color: var(--amarillo);
+  margin-bottom: 12px;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
 .precios-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 15px;
-  margin-bottom: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
 }
 
 .precio-tier {
-  background: #121010;
-  border: 1px solid rgba(124, 197, 41, 0.4);
-  padding: 15px;
+  background: #100e0d;
+  border: 1px solid rgba(124, 197, 41, 0.45);
+  padding: 12px 10px;
   border-radius: 10px;
   text-align: center;
 }
 
 .precio-tier span {
   display: block;
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   color: #bbb;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 .precio-tier strong {
   color: var(--verde-parrilla);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
 }
 
 .extras-banner {
   background: rgba(245, 197, 24, 0.08);
   border: 1px solid rgba(245, 197, 24, 0.3);
-  padding: 20px;
+  padding: 18px;
   border-radius: 12px;
 }
 
 .extras-banner h4 {
   color: var(--amarillo);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
 }
 
 .extras-items {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
-  font-size: 0.9rem;
+  gap: 16px;
+  font-size: 0.86rem;
   color: #eee;
 }
 
 .nota-importacion {
-  text-align: center;
-  margin-top: 25px;
-  font-size: 0.88rem;
+  margin-top: 18px;
+  font-size: 0.85rem;
   color: #aaa;
+  line-height: 1.5;
 }
 
 /* COTIZADOR INTERACTIVO */
 .cotizador-section {
-  background: #121010;
+  background: #120f0d;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .calculadora-card {
-  max-width: 900px;
-  margin: 0 auto;
-  background: var(--gris-oscuro);
-  border: 2px solid var(--amarillo);
+  background: var(--madera-oscura);
+  border: 2px solid rgba(245, 197, 24, 0.4);
   border-radius: 20px;
-  padding: 40px;
+  padding: 32px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
   align-items: center;
 }
 
@@ -480,7 +740,7 @@ section {
 
 .calc-controls select, .calc-controls input[type="range"] {
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 }
 
 .calc-controls select {
@@ -503,20 +763,20 @@ section {
 .calc-resultado {
   text-align: center;
   background: var(--carbon);
-  padding: 30px;
+  padding: 26px;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .calc-resultado h3 {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   color: var(--verde-parrilla);
   margin: 5px 0 15px;
 }
 
 .calc-resultado h2 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 3.4rem;
+  font-size: 3.2rem;
   color: var(--amarillo);
   margin: 5px 0 15px;
 }
@@ -527,23 +787,25 @@ section {
   margin-bottom: 15px;
 }
 
-/* Tarjetas de Experiencias */
+/* Catálogo de Especialidades */
 .grid-servicios {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
+  gap: 24px;
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
 .card {
-  background: var(--gris-oscuro);
-  border: 1px solid rgba(245, 197, 24, 0.15);
+  background: var(--madera-oscura);
+  border: 1px solid rgba(245, 197, 24, 0.2);
   border-radius: 16px;
-  padding: 30px 24px;
+  padding: 28px 24px;
   transition: transform 0.3s, border-color 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   border-color: var(--amarillo);
 }
 
@@ -553,9 +815,9 @@ section {
   color: var(--amarillo);
   padding: 5px 12px;
   border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 800;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
 
@@ -568,7 +830,7 @@ section {
 .card p {
   color: #ccc;
   font-size: 0.92rem;
-  line-height: 1.5;
+  line-height: 1.55;
   margin-bottom: 20px;
 }
 
@@ -588,23 +850,24 @@ section {
   background: #b51b1b;
 }
 
-/* Contacto y Botones de Redes con Logos */
+/* Contacto y Redes */
 .info-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
-  background: var(--gris-oscuro);
+  background: var(--madera-oscura);
   padding: 40px;
   border-radius: 20px;
   border: 1px solid rgba(245, 197, 24, 0.2);
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
 .sub-dorado {
   color: var(--amarillo);
   margin-bottom: 12px;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2rem;
-  letter-spacing: 1px;
+  font-size: 2.1rem;
 }
 
 .horario-lista {
@@ -620,7 +883,7 @@ section {
 
 .redes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 12px;
 }
 
@@ -636,14 +899,13 @@ section {
   font-size: 0.9rem;
   font-weight: 700;
   border: 1px solid rgba(245, 197, 24, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .social-icon {
   width: 22px;
   height: 22px;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
 }
 
 .red-btn:hover {
@@ -651,49 +913,13 @@ section {
   color: #fff;
 }
 
-.red-btn:hover .social-icon {
-  transform: scale(1.15);
-}
+.social-wa:hover { background: #25D366; border-color: #25D366; }
+.social-ig:hover { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); border-color: #dc2743; }
+.social-fb:hover { background: #1877F2; border-color: #1877F2; }
+.social-tt:hover { background: #000; border-color: #00f2fe; box-shadow: -2px 2px 12px rgba(254,44,85,0.5), 2px -2px 12px rgba(0,242,254,0.5); }
+.social-sp:hover { background: #1DB954; border-color: #1DB954; }
+.social-tel:hover { background: var(--amarillo); color: var(--carbon); border-color: var(--amarillo); }
 
-/* Colores Oficiales al pasar el cursor (Hover) */
-.social-wa:hover {
-  background: #25D366;
-  border-color: #25D366;
-  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
-}
-
-.social-ig:hover {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-  border-color: #e6683c;
-  box-shadow: 0 8px 20px rgba(220, 39, 67, 0.4);
-}
-
-.social-fb:hover {
-  background: #1877F2;
-  border-color: #1877F2;
-  box-shadow: 0 8px 20px rgba(24, 119, 242, 0.4);
-}
-
-.social-tt:hover {
-  background: #000000;
-  border-color: #00f2fe;
-  box-shadow: -3px 3px 15px rgba(254, 44, 85, 0.45), 3px -3px 15px rgba(0, 242, 254, 0.45);
-}
-
-.social-sp:hover {
-  background: #1DB954;
-  border-color: #1DB954;
-  box-shadow: 0 8px 20px rgba(29, 185, 84, 0.35);
-}
-
-.social-tel:hover {
-  background: var(--amarillo);
-  color: var(--carbon);
-  border-color: var(--amarillo);
-  box-shadow: 0 8px 20px rgba(245, 197, 24, 0.4);
-}
-
-/* Botón Flotante de WhatsApp */
 .wa-float {
   position: fixed;
   bottom: 25px;
@@ -709,12 +935,6 @@ section {
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.wa-float:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.65);
 }
 
 footer {
@@ -724,18 +944,21 @@ footer {
   color: #777;
 }
 
+/* Responsivo para celulares y pantallas medianas */
+@media (max-width: 980px) {
+  .split-layout-right-video,
+  .split-layout-left-video {
+    grid-template-columns: 1fr;
+  }
+  .video-sidebar {
+    position: relative;
+    top: 0;
+    margin: 20px auto 0;
+  }
+}
+
 @keyframes pulse {
   0% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.4); opacity: 0.5; }
   100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-25px); }
-  to { opacity: 1; transform: translateY(0); }
 }

@@ -4,316 +4,397 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Los Hijos de Villa | Parrilla de Barrio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FAVICON CON EL LOGO OFICIAL -->
+  <!-- Toma automáticamente tu archivo logo.png; si aún no lo subes, usa el icono circular amarillo/rojo integrado -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="alternate icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='47' fill='%23F5C518' stroke='%23D92323' stroke-width='6'/><text x='50%' y='46%' text-anchor='middle' fill='%233A2314' font-family='Impact, sans-serif' font-size='26'>LHDV</text><path d='M22 65 Q38 80 50 64 Q62 80 78 65 Q62 55 50 62 Q38 55 22 65 Z' fill='%23D92323'/></svg>">
+
+  <!-- Tipografías: Bebas Neue, Yellowtail (cursiva de tus flyers) y Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&family=Yellowtail&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- Textura sutil de carbón -->
+  <div class="noise-overlay"></div>
 
   <!-- Navegación -->
   <nav>
     <a href="#" class="logo-nav">
       <img src="logo.png" alt="Logo Los Hijos de Villa" class="nav-logo-img" onerror="this.style.display='none'">
-      LOS HIJOS DE VILLA
+      <div>
+        LOS HIJOS DE VILLA
+        <span class="nav-sub">PARRILLA DE BARRIO</span>
+      </div>
     </a>
     <div class="nav-links">
-      <a href="#tablon">Avisos y Ofertas</a>
-      <a href="#paquetes">Paquetes y Precios</a>
+      <a href="#tablon">Tablón y Ferias</a>
+      <a href="#paquetes">Menús y Precios</a>
       <a href="#cotizador">Cotizador</a>
-      <a href="#experiencias">Más Servicios</a>
+      <a href="#experiencias">Catálogo</a>
       <a href="#contacto">Contacto</a>
     </div>
   </nav>
 
-  <!-- Portada / Hero -->
+  <!-- Portada / Hero con Fondo Semitransparente de Cortes en el Asador -->
   <header class="hero">
+    <!-- Guarda tu foto de los cortes colgados como 'fondo-asador.jpg' en la misma carpeta -->
+    <div class="hero-bg-photo"></div>
     <canvas id="fireCanvas"></canvas>
+
     <div class="hero-content">
-      <!-- Si exportas tu PDF 'logo LHDV 2' como 'logo.png', se mostrará automáticamente aquí -->
       <div class="badge-logo">
-        <img src="logo.png" alt="Los Hijos de Villa - Parrilla de Barrio" class="hero-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <img src="logo.png" alt="Los Hijos de Villa" class="hero-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
         <div class="badge-fallback">
           LOS HIJOS<br>DE VILLA
           <span>🌶️🌶️</span>
           <span>PARRILLA DE BARRIO</span>
         </div>
       </div>
-      <h1>EL ARTE DEL ASADO EN TU EVENTO</h1>
-      <p>Servicio profesional y especializado en asados y parrilladas a domicilio en CDMX y Área Metropolitana, eventos sociales, corporativos y talleres de integración empresarial.</p>
-      <a href="https://wa.me/loshijosdevilla" target="_blank" rel="noopener noreferrer" class="btn-cta">Solicitar Cotización por WhatsApp</a>
+      <span class="cursive-accent">Experiencia gastronómica a fuego vivo</span>
+      <h1 class="tilted-title">EL ARTE DEL ASADO<br>EN TU EVENTO</h1>
+      <p>Llevamos la excelencia de nuestra parrilla con leña de encino, carbón y carne Calidad Prime Sonorense a tus celebraciones familiares, eventos corporativos y talleres de integración.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/loshijosdevilla" target="_blank" rel="noopener noreferrer" class="btn-cta">Cotizar mi Evento en WhatsApp</a>
+        <a href="#paquetes" class="btn-outline">Ver Paquetes y Precios ↓</a>
+      </div>
     </div>
   </header>
 
+  <!-- Cinta Parrillera en Movimiento -->
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <span>CARNE CALIDAD PRIME SONORENSE</span> <span class="sep">◆</span>
+      <span>ASADO CON LEÑA DE ENCINO Y CARBÓN</span> <span class="sep">◆</span>
+      <span>SALSA MACHA ARTESANAL "LAS HIJAS DE VILLA"</span> <span class="sep">◆</span>
+      <span>CHEF Y PARRILLEROS CERTIFICADOS</span> <span class="sep">◆</span>
+      <span>EVENTOS EN CDMX Y ÁREA METROPOLITANA</span> <span class="sep">◆</span>
+      <span>CARNE CALIDAD PRIME SONORENSE</span> <span class="sep">◆</span>
+      <span>ASADO CON LEÑA DE ENCINO Y CARBÓN</span> <span class="sep">◆</span>
+      <span>SALSA MACHA ARTESANAL "LAS HIJAS DE VILLA"</span> <span class="sep">◆</span>
+    </div>
+  </div>
+
   <!-- Tablón de Ferias, Eventos y Ofertas Especiales -->
   <section id="tablon" class="tablon-section">
-    <div class="tablon-header">
-      <span class="pulse-dot"></span>
-      <h2>TABLÓN DE LA PARRILLA: FERIAS Y OFERTAS ESPECIALES</h2>
+    <div class="section-header-left">
+      <div class="live-indicator"><span class="pulse-dot"></span> EN CARTELERA</div>
+      <h2 class="title-with-brush">TABLÓN DE FERIAS <span class="cursive-inline">y Ofertas</span></h2>
     </div>
-    <p class="section-subtitle">Entérate dónde estaremos asando próximamente y aprovecha las promociones de temporada</p>
 
     <div class="tablon-grid">
       <div class="pin-card">
-        <div class="pin-badge">🔥 PRÓXIMO EVENTO</div>
-        <h3>Visítanos en la Próxima Feria Gastronómica</h3>
-        <p>Ven a probar nuestros cortes ahumados, sliders y toda la línea de Salsa Macha "Las Hijas de Villa" en vivo.</p>
-        <span class="pin-meta">📍 Síguenos en Instagram y TikTok para ver fechas</span>
+        <div class="pin-badge">🔥 PRÓXIMA PARADA</div>
+        <h3>Ferias y Festivales Gastronómicos</h3>
+        <p>Prueba en directo nuestros cortes al asador, sliders ahumados y toda la línea de Salsa Macha en nuestras presentaciones especiales.</p>
+        <a href="https://www.instagram.com/lhdv.nz/" target="_blank" rel="noopener noreferrer" class="pin-link">Ver ubicaciones en @lhdv.nz →</a>
+      </div>
+
+      <div class="pin-card featured-pin">
+        <div class="pin-badge">🎁 PROMOCIÓN EXCLUSIVA</div>
+        <h3>Beneficio al Reservar tu Fecha</h3>
+        <p>Aparta la fecha de tu servicio con un depósito inicial (aplicable al monto final total) y solicita la promoción especial que tenemos disponible para tu evento.</p>
+        <a href="https://wa.me/5510455547?text=Hola,%20quiero%20conocer%20la%20promoción%20vigente%20para%20reservar%20mi%20evento" target="_blank" rel="noopener noreferrer" class="pin-link">Reclamar promoción por WhatsApp →</a>
       </div>
 
       <div class="pin-card">
-        <div class="pin-badge">🎁 OFERTA ESPECIAL</div>
-        <h3>Promoción al Reservar tu Fecha</h3>
-        <p>Reserva ahora tu Paquete Parrilla Clásica o Tradicional con un depósito inicial aplicable al monto total y pregunta por la promoción vigente que tenemos para ti.</p>
-        <a href="https://wa.me/5510455547?text=Hola,%20quiero%20conocer%20la%20promoción%20vigente%20para%20reservar%20mi%20evento" target="_blank" rel="noopener noreferrer" class="pin-link">Solicitar promoción en WhatsApp →</a>
-      </div>
-
-      <div class="pin-card">
-        <div class="pin-badge">🌶️ PRODUCTO ESTRELLA</div>
+        <div class="pin-badge">🌶️ HECHO A MANO</div>
         <h3>Salsa Macha "Las Hijas de Villa"</h3>
-        <p>Elaborada 100% a mano de forma artesanal. Pide tus frascos a domicilio o agrégala como complemento estelar en tu evento.</p>
-        <a href="https://wa.me/5510455547?text=Hola,%20me%20interesa%20pedir%20Salsa%20Macha%20Las%20Hijas%20de%20Villa" target="_blank" rel="noopener noreferrer" class="pin-link">Hacer pedido →</a>
+        <p>Lleva a tu mesa la herencia y explosión de sabores auténticos de nuestra salsa artesanal elaborada 100% a mano.</p>
+        <a href="https://wa.me/5510455547?text=Hola,%20me%20interesa%20pedir%20Salsa%20Macha%20Las%20Hijas%20de%20Villa" target="_blank" rel="noopener noreferrer" class="pin-link">Ordenar frascos a domicilio →</a>
       </div>
     </div>
   </section>
 
-  <!-- Sección Detallada de Paquetes Estrella -->
-  <section id="paquetes">
-    <h2 class="section-title">PAQUETES DE PARRILLA A DOMICILIO</h2>
-    <p class="section-subtitle">Carne Calidad Prime Sonorense preparada al momento por Chef y parrilleros certificados</p>
+  <!-- SECCIÓN PAQUETES: 3/4 de pantalla para Información (Izquierda) y 1/4 para Video (Derecha) -->
+  <section id="paquetes" class="split-section">
+    <div class="split-layout-right-video">
+      
+      <!-- Columna Amplia (75%): Menús y Precios -->
+      <div class="split-main">
+        <span class="eyebrow">NUESTROS SERVICIOS MÁS SOLICITADOS</span>
+        <h2 class="title-left">PAQUETES DE PARRILLA <span class="cursive-inline">a Domicilio</span></h2>
+        <p class="lead-text">Preparados en el lugar de tu evento con montaje profesional, asadores, mesas de servicio y atención personalizada.</p>
 
-    <div class="tabs-paquetes">
-      <button class="tab-btn active" data-target="clasica">🔥 Paquete Parrilla Clásica</button>
-      <button class="tab-btn" data-target="tradicional">🔥 Paquete Parrilla Tradicional</button>
+        <div class="tabs-paquetes">
+          <button class="tab-btn active" data-target="clasica">
+            PAQUETE PARRILLA <span class="cursive-btn">Clásica</span>
+          </button>
+          <button class="tab-btn" data-target="tradicional">
+            PAQUETE PARRILLA <span class="cursive-btn">Tradicional</span>
+          </button>
+        </div>
+
+        <!-- Panel 1: Parrilla Clásica -->
+        <div id="clasica" class="paquete-panel active">
+          <div class="paquete-intro">
+            <div>
+              <span class="tag-minimo">Servicio de Bufé | Mínimo 30 personas</span>
+              <h3>Parrilla <span class="cursive-inline">Clásica</span></h3>
+              <p>Propuesta premium asada al momento sobre <strong>leña de encino y carbón</strong> con carne Calidad Prime Sonorense. Incluye plato de madera de parota, taza de peltre, servilleta de tela y cubertería metálica sin costo extra.</p>
+            </div>
+            <div class="servicio-badge">
+              <strong>5:00 HRS</strong>
+              <span>2:30 prep + 2:30 servicio</span>
+            </div>
+          </div>
+
+          <div class="menu-columns">
+            <div class="menu-box">
+              <h4>Proteína y Embutidos</h4>
+              <ul>
+                <li>Tomahawk y Picanha</li>
+                <li>Arrachera (Res) y Gaonera de filete (Res)</li>
+                <li>Costilla St. Louis (Cerdo)</li>
+                <li>Espaldilla de Jabalí</li>
+                <li>Chorizo argentino y Chistorra</li>
+              </ul>
+            </div>
+
+            <div class="menu-box">
+              <h4>Especialidades y Guarnición</h4>
+              <ul>
+                <li>Jugo de carne (180 ml)</li>
+                <li>Mini choripán y Slider de filete (mini bollo)</li>
+                <li>Taco Regio (tortilla de harina y queso)</li>
+                <li>Papa criolla y Espárragos asados</li>
+                <li>Mac and cheese (o más opciones de pasta)</li>
+                <li>Ensalada de fresa y queso de cabra</li>
+              </ul>
+            </div>
+
+            <div class="menu-box">
+              <h4>Salsas y Complementos</h4>
+              <ul>
+                <li>Guacamole tradicional (consulta + variedades)</li>
+                <li>Salsa de Piña y Habanero</li>
+                <li>Aderezo Chimichurri y Cebollas Caramelizadas</li>
+                <li>Salsa Macha "Las Hijas de Villa"</li>
+                <li>Pan baguette y Limones</li>
+              </ul>
+            </div>
+          </div>
+
+          <h4 class="sub-precios">Escala de Inversión por Persona:</h4>
+          <div class="precios-grid">
+            <div class="precio-tier"><span>30 a 35 personas</span><strong>$480.00</strong></div>
+            <div class="precio-tier"><span>36 a 50 personas</span><strong>$470.00</strong></div>
+            <div class="precio-tier"><span>51 a 70 personas</span><strong>$460.00</strong></div>
+            <div class="precio-tier"><span>71 a 100 personas</span><strong>$450.00</strong></div>
+            <div class="precio-tier"><span>101 a 150 personas</span><strong>$440.00</strong></div>
+            <div class="precio-tier"><span>150 a 200 personas</span><strong>$430.00</strong></div>
+          </div>
+
+          <div class="extras-banner">
+            <h4>Agrega Entradas a tu Servicio (Mínimo 10 personas):</h4>
+            <div class="extras-items">
+              <span><strong>Tabla de Quesos</strong> (por mesa / para 10): +$420.00</span>
+              <span><strong>Tabla de Montaditos</strong> (Chorizo y Chistorra): $220.00</span>
+              <span><strong>Tuétano</strong> (por persona): +$75.00</span>
+              <span><strong>Molleja de Ternera</strong> (por persona): +$55.00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Parrilla Tradicional -->
+        <div id="tradicional" class="paquete-panel">
+          <div class="paquete-intro">
+            <div>
+              <span class="tag-minimo">Asado al Carbón | Mínimo 20 personas</span>
+              <h3>Parrilla <span class="cursive-inline">Tradicional</span></h3>
+              <p>Más que una taquiza, es nuestro servicio práctico y completo asado directamente a la <strong>brasa de carbón</strong> con Carne Mexicana certificación TIF de calidad Prime Sonorense. Incluye plato plástico retornable sin costo extra.</p>
+            </div>
+            <div class="servicio-badge">
+              <strong>4:00 HRS</strong>
+              <span>2:00 prep + 2:00 servicio</span>
+            </div>
+          </div>
+
+          <div class="menu-columns">
+            <div class="menu-box">
+              <h4>Selección de Cortes y Embutidos</h4>
+              <ul>
+                <li>Rib Eye (Res) y New York (Res)</li>
+                <li>Arrachera (Res) y Gaonera de Filete (Res)</li>
+                <li>Muslos de pollo al limón</li>
+                <li>Chorizo argentino y Chistorra</li>
+                <li><em>*Cambios a la proteína en razón al costo</em></li>
+              </ul>
+            </div>
+
+            <div class="menu-box">
+              <h4>Especialidades y Guarnición</h4>
+              <ul>
+                <li>Chili poppers envueltos en tocino y rellenos de queso</li>
+                <li>Mini choripán</li>
+                <li>Sliders de Filete (mini bollos)</li>
+                <li>Papa en mantequilla de ajo y romero</li>
+                <li>Espárragos asados</li>
+              </ul>
+            </div>
+
+            <div class="menu-box">
+              <h4>Salsas y Complementos</h4>
+              <ul>
+                <li>Pepino con habanero y Pico de gallo con aguacate</li>
+                <li>Chimichurri y Cebollas Caramelizadas</li>
+                <li>Salsa Macha "Las Hijas de Villa"</li>
+                <li>Tortillas de maíz, limones y servilletas de papel</li>
+              </ul>
+            </div>
+          </div>
+
+          <h4 class="sub-precios">Escala de Inversión por Persona:</h4>
+          <div class="precios-grid">
+            <div class="precio-tier"><span>20 a 30 personas</span><strong>$390.00</strong></div>
+            <div class="precio-tier"><span>31 a 50 personas</span><strong>$380.00</strong></div>
+            <div class="precio-tier"><span>51 a 70 personas</span><strong>$370.00</strong></div>
+            <div class="precio-tier"><span>71 a 100 personas</span><strong>$360.00</strong></div>
+            <div class="precio-tier"><span>101 a 150 personas</span><strong>$350.00</strong></div>
+            <div class="precio-tier"><span>151 a 200 personas</span><strong>$340.00</strong></div>
+          </div>
+        </div>
+
+        <p class="nota-importacion">
+          * Para servicios con carne de importación certificada (<strong>USDA Choice, High Choice, Silver Sterling, Angus o Black Angus</strong>), grupos mayores/menores, cobertura foránea o adición de <strong>meseros, barman, cristalería y bebidas</strong>, solicita cotización directa.
+        </p>
+      </div>
+
+      <!-- Columna Compacta (< 1/4 de página = 280px): Video 1 Vertical -->
+      <aside class="video-sidebar">
+        <div class="video-frame">
+          <div class="video-frame-header">
+            <span class="pulse-dot"></span>
+            <span>ASÍ SE VIVE NUESTRA PARRILLA</span>
+          </div>
+          <div class="tiktok-Wrapper">
+            <iframe
+              src="https://www.tiktok.com/player/v1/7318148079218199813?music_info=0&description=0&rel=0"
+              allow="fullscreen; autoplay; encrypted-media"
+              loading="lazy"
+              title="Preparación y Cortes Los Hijos de Villa">
+            </iframe>
+          </div>
+          <div class="video-caption">
+            <p>Montaje profesional, leña de encino y cortes jugosos servidos al momento.</p>
+            <a href="https://www.tiktok.com/@lhdv.nz/video/7318148079218199813" target="_blank" rel="noopener noreferrer">Ver en TikTok @lhdv.nz ↗</a>
+          </div>
+        </div>
+      </aside>
+
     </div>
-
-    <!-- Contenido Paquete Parrilla Clásica -->
-    <div id="clasica" class="paquete-panel active">
-      <div class="paquete-intro">
-        <div>
-          <span class="tag-minimo">Servicio de Bufé | Mínimo 30 personas</span>
-          <h3>Parrilla Clásica (Leña de Encino y Carbón)</h3>
-          <p>Una propuesta de parrilla premium pensada para celebraciones donde quieres ofrecer a tus invitados algo más que un bufé. Preparado al momento sobre leña de encino y carbón con cortes seleccionados de carne Calidad Prime Sonorense.</p>
-        </div>
-        <div class="servicio-badge">
-          <strong>5 Horas Totales</strong>
-          <span>2:30 hrs preparación + 2:30 hrs servicio</span>
-        </div>
-      </div>
-
-      <div class="menu-columns">
-        <div class="menu-box">
-          <h4>🥩 Proteína y Embutidos</h4>
-          <ul>
-            <li>Tomahawk y Picanha</li>
-            <li>Arrachera (Res) y Gaonera de filete (Res)</li>
-            <li>Costilla St. Louis (Cerdo)</li>
-            <li>Espaldilla de Jabalí</li>
-            <li>Chorizo argentino y Chistorra</li>
-          </ul>
-        </div>
-
-        <div class="menu-box">
-          <h4>🍔 Especialidades y Guarnición</h4>
-          <ul>
-            <li>Jugo de carne (180 ml)</li>
-            <li>Mini choripán y Slider de filete (mini bollo)</li>
-            <li>Taco Regio (tortilla de harina y queso)</li>
-            <li>Papa criolla y Espárragos asados</li>
-            <li>Mac and cheese (o más opciones de pasta)</li>
-            <li>Ensalada de fresa y queso de cabra</li>
-          </ul>
-        </div>
-
-        <div class="menu-box">
-          <h4>🌶️ Salsas y Complementos</h4>
-          <ul>
-            <li>Guacamole tradicional y Salsa de Piña con Habanero</li>
-            <li>Aderezo Chimichurri y Cebollas Caramelizadas</li>
-            <li>Salsa Macha "Las Hijas de Villa"</li>
-            <li>Pan baguette y Limones</li>
-          </ul>
-        </div>
-
-        <div class="menu-box">
-          <h4>🍽️ ¿Qué incluye por invitado?</h4>
-          <ul>
-            <li>Plato de madera de parota, taza de peltre, servilleta de tela y cubertería metálica sin costo extra</li>
-            <li>Montaje profesional de asadores, mesa bufé con chafer caliente/frío y weber</li>
-            <li>Transporte en CDMX y Área Metropolitana (foráneos previo cálculo de viáticos)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="precios-grid">
-        <div class="precio-tier"><span>30 a 35 personas</span><strong>$480 / persona</strong></div>
-        <div class="precio-tier"><span>36 a 50 personas</span><strong>$470 / persona</strong></div>
-        <div class="precio-tier"><span>51 a 70 personas</span><strong>$460 / persona</strong></div>
-        <div class="precio-tier"><span>71 a 100 personas</span><strong>$450 / persona</strong></div>
-        <div class="precio-tier"><span>101 a 150 personas</span><strong>$440 / persona</strong></div>
-        <div class="precio-tier"><span>150 a 200 personas</span><strong>$430 / persona</strong></div>
-      </div>
-
-      <div class="extras-banner">
-        <h4>🧀 Agrega Entradas a tu Servicio (Mínimo 10 personas):</h4>
-        <div class="extras-items">
-          <span><strong>Tabla de Quesos</strong> (por mesa / para 10): +$420</span>
-          <span><strong>Tabla de Montaditos</strong> (Chorizo y Chistorra): $220</span>
-          <span><strong>Tuétano</strong> (por persona): +$75</span>
-          <span><strong>Molleja de Ternera</strong> (por persona): +$55</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Contenido Paquete Parrilla Tradicional -->
-    <div id="tradicional" class="paquete-panel">
-      <div class="paquete-intro">
-        <div>
-          <span class="tag-minimo">Asado al Carbón | Mínimo 20 personas</span>
-          <h3>Parrilla Tradicional (Brasa de Carbón)</h3>
-          <p>Más que una taquiza, es nuestro servicio más confiable y práctico preparado al momento directamente a la brasa de carbón con Carne Mexicana certificación TIF de calidad Prime Sonorense.</p>
-        </div>
-        <div class="servicio-badge">
-          <strong>4 Horas Totales</strong>
-          <span>2:00 hrs preparación + 2:00 hrs servicio</span>
-        </div>
-      </div>
-
-      <div class="menu-columns">
-        <div class="menu-box">
-          <h4>🥩 Selección de Cortes y Embutidos</h4>
-          <ul>
-            <li>Rib Eye (Res) y New York (Res)</li>
-            <li>Arrachera (Res) y Gaonera de Filete (Res)</li>
-            <li>Muslos de pollo al limón</li>
-            <li>Chorizo argentino y Chistorra</li>
-            <li><em>*Cambios de proteína disponibles en razón al costo</em></li>
-          </ul>
-        </div>
-
-        <div class="menu-box">
-          <h4>🥓 Especialidades y Guarnición</h4>
-          <ul>
-            <li>Chili poppers envueltos en tocino y rellenos de queso</li>
-            <li>Mini choripán</li>
-            <li>Sliders de Filete (mini bollos)</li>
-            <li>Papa en mantequilla de ajo y romero</li>
-            <li>Espárragos asados</li>
-          </ul>
-        </div>
-
-        <div class="menu-box">
-          <h4>🥑 Salsas y Complementos</h4>
-          <ul>
-            <li>Pepino con habanero y Pico de gallo con aguacate</li>
-            <li>Chimichurri y Cebollas Caramelizadas</li>
-            <li>Salsa Macha "Las Hijas de Villa"</li>
-            <li>Tortillas de maíz, limones y servilletas de papel</li>
-          </ul>
-        </div>
-
-        <div class="menu-box">
-          <h4>🍽️ ¿Qué incluye el servicio?</h4>
-          <ul>
-            <li>Plato plástico retornable sin costo extra por persona</li>
-            <li>Montaje profesional de asadores para carbón y mesas de servicio</li>
-            <li>Chef y parrilleros certificados</li>
-            <li>Transporte en CDMX y Área Metropolitana</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="precios-grid">
-        <div class="precio-tier"><span>20 a 30 personas</span><strong>$390 / persona</strong></div>
-        <div class="precio-tier"><span>31 a 50 personas</span><strong>$380 / persona</strong></div>
-        <div class="precio-tier"><span>51 a 70 personas</span><strong>$370 / persona</strong></div>
-        <div class="precio-tier"><span>71 a 100 personas</span><strong>$360 / persona</strong></div>
-        <div class="precio-tier"><span>101 a 150 personas</span><strong>$350 / persona</strong></div>
-        <div class="precio-tier"><span>151 a 200 personas</span><strong>$340 / persona</strong></div>
-      </div>
-    </div>
-
-    <p class="nota-importacion">
-      * Si deseas cualquiera de nuestros servicios con carne de importación certificada <strong>USDA Choice, High Choice, Silver Sterling, Angus o Black Angus</strong>, o requieres <strong>meseros, barman, cristalería y bebidas</strong>, solicita una cotización personalizada.
-    </p>
   </section>
 
-  <!-- Calculadora Interactiva de Cotización -->
+  <!-- SECCIÓN COTIZADOR: 1/4 de pantalla para Video (Izquierda) y 3/4 para Calculadora (Derecha) -->
   <section id="cotizador" class="cotizador-section">
-    <h2 class="section-title">CALCULADORA DE INVERSIÓN PARA TU EVENTO</h2>
-    <p class="section-subtitle">Calcula al instante el presupuesto estimado según tu número de invitados y envíalo por WhatsApp</p>
+    <div class="split-layout-left-video">
 
-    <div class="calculadora-card">
-      <div class="calc-controls">
-        <label for="selectPaquete">1. Elige tu Paquete:</label>
-        <select id="selectPaquete">
-          <option value="clasica">Paquete Parrilla Clásica (Mín. 30 personas)</option>
-          <option value="tradicional">Paquete Parrilla Tradicional (Mín. 20 personas)</option>
-        </select>
+      <!-- Columna Compacta (< 1/4 de página = 280px): Video 2 Vertical -->
+      <aside class="video-sidebar">
+        <div class="video-frame">
+          <div class="video-frame-header">
+            <span class="pulse-dot"></span>
+            <span>EVENTOS Y EXPERIENCIAS EN VIVO</span>
+          </div>
+          <div class="tiktok-Wrapper">
+            <iframe
+              src="https://www.tiktok.com/player/v1/7514926604406000901?music_info=0&description=0&rel=0"
+              allow="fullscreen; autoplay; encrypted-media"
+              loading="lazy"
+              title="Eventos Los Hijos de Villa">
+            </iframe>
+          </div>
+          <div class="video-caption">
+            <p>Calidad, fuego y sabor inconfundible en reuniones sociales y empresariales.</p>
+            <a href="https://www.tiktok.com/@lhdv.nz/video/7514926604406000901" target="_blank" rel="noopener noreferrer">Ver en TikTok @lhdv.nz ↗</a>
+          </div>
+        </div>
+      </aside>
 
-        <label for="rangePersonas">2. Número de Invitados: <strong id="numPersonasLabel">50</strong> personas</label>
-        <input type="range" id="rangePersonas" min="20" max="200" value="50" step="1">
+      <!-- Columna Amplia (75%): Calculadora Interactiva -->
+      <div class="split-main">
+        <span class="eyebrow">PRESUPUESTO TRANSPARENTE AL INSTANTE</span>
+        <h2 class="title-left">ARMA TU COTIZACIÓN <span class="cursive-inline">Personalizada</span></h2>
+        <p class="lead-text">Selecciona el paquete y desliza la barra según el número de invitados para calcular tu inversión exacta.</p>
 
-        <div class="calc-extras">
-          <label>3. Agregar Entradas Extra (Opcional):</label>
-          <label class="check-item"><input type="checkbox" id="extraTuetano" value="75"> Tuétano (+$75 por persona)</label>
-          <label class="check-item"><input type="checkbox" id="extraMolleja" value="55"> Molleja de Ternera (+$55 por persona)</label>
+        <div class="calculadora-card">
+          <div class="calc-controls">
+            <label for="selectPaquete">1. Elige tu Paquete:</label>
+            <select id="selectPaquete">
+              <option value="clasica">Paquete Parrilla Clásica (Mín. 30 personas)</option>
+              <option value="tradicional">Paquete Parrilla Tradicional (Mín. 20 personas)</option>
+            </select>
+
+            <label for="rangePersonas">2. Cantidad de Invitados: <strong id="numPersonasLabel">50</strong> personas</label>
+            <input type="range" id="rangePersonas" min="20" max="200" value="50" step="1">
+
+            <div class="calc-extras">
+              <label>3. Agregar Entradas por Persona (Opcional):</label>
+              <label class="check-item"><input type="checkbox" id="extraTuetano" value="75"> Tuétano (+$75.00 por persona)</label>
+              <label class="check-item"><input type="checkbox" id="extraMolleja" value="55"> Molleja de Ternera (+$55.00 por persona)</label>
+            </div>
+          </div>
+
+          <div class="calc-resultado">
+            <span>Inversión por invitado:</span>
+            <h3 id="precioPorPersona">$470.00 MXN</h3>
+            <span>Inversión total estimada:</span>
+            <h2 id="precioTotal">$23,500.00 MXN</h2>
+            <p id="avisoMinimo" class="aviso-min"></p>
+            <a id="btnEnviarCotizacion" href="#" target="_blank" rel="noopener noreferrer" class="btn-cta full-width-btn">Reservar este Paquete en WhatsApp</a>
+          </div>
         </div>
       </div>
 
-      <div class="calc-resultado">
-        <span>Inversión por persona base:</span>
-        <h3 id="precioPorPersona">$470.00 MXN</h3>
-        <span>Total estimado del evento:</span>
-        <h2 id="precioTotal">$23,500.00 MXN</h2>
-        <p id="avisoMinimo" class="aviso-min"></p>
-        <a id="btnEnviarCotizacion" href="#" target="_blank" rel="noopener noreferrer" class="btn-cta">Reservar este Paquete por WhatsApp</a>
-      </div>
     </div>
   </section>
 
-  <!-- Otras Experiencias en Parrilla -->
+  <!-- Catálogo de Especialidades -->
   <section id="experiencias">
-    <h2 class="section-title">MÁS EXPERIENCIAS DE LOS HIJOS DE VILLA</h2>
-    <p class="section-subtitle">Opciones exóticas, entregas listas para comer y talleres empresariales</p>
+    <div class="section-header-left">
+      <span class="eyebrow">MÁS ALLÁ DEL BUFÉ</span>
+      <h2 class="title-with-brush">CATÁLOGO DE <span class="cursive-inline">Especialidades</span></h2>
+    </div>
 
     <div class="grid-servicios">
       <div class="card">
         <span class="tag-minimo">Tradicional y Exótico</span>
-        <h3>Asado Criollo</h3>
-        <p>Experiencia culinaria con jabalí, búfalo, venado, armadillo, cordero, cabrito o lechón, acompañados de guarniciones de primera calidad y salsa macha.</p>
-        <a href="https://wa.me/5510455547?text=Hola,%20me%20interesa%20cotizar%20un%20Asado%20Criollo" target="_blank" rel="noopener noreferrer" class="btn-card">Solicitar Cotización</a>
+        <h3>Asado Criollo al Asador</h3>
+        <p>Desde cortes tradicionales hasta carnes exóticas: jabalí, búfalo, venado, armadillo, cordero, cabrito o lechón, acompañados de guarniciones y salsas macha.</p>
+        <a href="https://wa.me/5510455547?text=Hola,%20me%20interesa%20cotizar%20un%20Asado%20Criollo" target="_blank" rel="noopener noreferrer" class="btn-card">Cotizar Asado Criollo</a>
       </div>
 
       <div class="card">
         <span class="tag-minimo">A partir de 10 personas</span>
         <h3>Entregas a Domicilio</h3>
-        <p>Mandamos hasta tu hogar todo el sabor del asado listo para disfrutar. Solicita nuestros menús exclusivos para modalidad solo de entrega.</p>
-        <a href="https://wa.me/5510455547?text=Hola,%20quiero%20los%20menús%20de%20Entrega%20a%20Domicilio" target="_blank" rel="noopener noreferrer" class="btn-card">Pedir Menús</a>
+        <p>Mandamos hasta la puerta de tu casa todo el sabor del asado listo para servir en la mesa. Solicita nuestros menús exclusivos solo para entrega.</p>
+        <a href="https://wa.me/5510455547?text=Hola,%20quiero%20los%20menús%20de%20Entrega%20a%20Domicilio" target="_blank" rel="noopener noreferrer" class="btn-card">Solicitar Menús de Entrega</a>
       </div>
 
       <div class="card">
         <span class="tag-minimo">Eventos Informales</span>
         <h3>Hamburguesas y Sándwiches</h3>
-        <p>Desde irresistibles opciones de ahumados hasta jugosas creaciones a la parrilla para disfrutar de una comida informal y deliciosa.</p>
-        <a href="https://wa.me/5510455547?text=Hola,%20me%20interesa%20el%20menú%20de%20Hamburguesas%20y%20Sándwiches" target="_blank" rel="noopener noreferrer" class="btn-card">Cotizar Menú</a>
+        <p>Opciones de ahumados y jugosas creaciones a la parrilla ideales para disfrutar de una comida informal e inolvidable con tus invitados.</p>
+        <a href="https://wa.me/5510455547?text=Hola,%20me%20interesa%20el%20menú%20de%20Hamburguesas%20y%20Sándwiches" target="_blank" rel="noopener noreferrer" class="btn-card">Cotizar Hamburguesas</a>
       </div>
 
       <div class="card">
         <span class="tag-minimo">Corporativo</span>
         <h3>Talleres de Integración</h3>
-        <p>Diseñamos talleres de integración empresarial alrededor del fuego que fortalecen equipos y generan experiencias auténticas.</p>
-        <a href="https://wa.me/5510455547?text=Hola,%20me%20interesa%20información%20sobre%20los%20Talleres%20de%20Integración%20Empresarial" target="_blank" rel="noopener noreferrer" class="btn-card">Cotizar Taller</a>
+        <p>Experiencias culinarias alrededor del fuego diseñadas para empresas que buscan fortalecer equipos de alto nivel en un ambiente auténtico.</p>
+        <a href="https://wa.me/5510455547?text=Hola,%20me%20interesa%20información%20sobre%20los%20Talleres%20de%20Integración%20Empresarial" target="_blank" rel="noopener noreferrer" class="btn-card">Cotizar Taller Empresarial</a>
       </div>
     </div>
   </section>
 
   <!-- Horarios y Canales Oficiales con Logos -->
   <section id="contacto">
-    <h2 class="section-title">HORARIOS Y CONTACTO</h2>
-    <p class="section-subtitle">Cobertura en CDMX, Área Metropolitana y servicios foráneos</p>
-
     <div class="info-container">
       <div>
-        <h3 class="sub-dorado">Horario de Atención</h3>
+        <span class="eyebrow">ATENCIÓN TODA LA SEMANA</span>
+        <h3 class="sub-dorado">Horarios de Servicio</h3>
         <ul class="horario-lista">
           <li><span>Lunes a Viernes</span> <strong>9:00 am - 11:00 pm</strong></li>
           <li><span>Sábado</span> <strong>11:00 am - 10:00 pm</strong></li>
@@ -322,55 +403,38 @@
       </div>
 
       <div>
+        <span class="eyebrow">CONECTA CON LA PARRILLA</span>
         <h3 class="sub-dorado">Canales Oficiales</h3>
-        <p style="color: #ccc; margin-bottom: 18px;">WhatsApp y Teléfono: <strong>+52 1 55 1045 5547</strong></p>
+        <p style="color: #ccc; margin-bottom: 18px;">WhatsApp y Teléfono Directo: <strong>+52 1 55 1045 5547</strong></p>
 
         <div class="redes-grid">
-          <!-- WhatsApp Business -->
           <a href="https://wa.me/loshijosdevilla" target="_blank" rel="noopener noreferrer" class="red-btn social-wa">
-            <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor">
-              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.126.556 4.122 1.529 5.854l-1.529 5.586 5.724-1.501c1.685.918 3.619 1.441 5.676 1.441 6.627 0 12-5.373 12-12s-5.373-12-11.4-11.38z"/>
-            </svg>
+            <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.126.556 4.122 1.529 5.854l-1.529 5.586 5.724-1.501c1.685.918 3.619 1.441 5.676 1.441 6.627 0 12-5.373 12-12s-5.373-12-11.4-11.38z"/></svg>
             <span>WhatsApp</span>
           </a>
 
-          <!-- Instagram -->
           <a href="https://www.instagram.com/lhdv.nz/" target="_blank" rel="noopener noreferrer" class="red-btn social-ig">
-            <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
+            <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             <span>Instagram</span>
           </a>
 
-          <!-- Facebook -->
           <a href="https://www.facebook.com/LHDV.NZ" target="_blank" rel="noopener noreferrer" class="red-btn social-fb">
-            <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor">
-              <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
-            </svg>
+            <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
             <span>Facebook</span>
           </a>
 
-          <!-- TikTok -->
           <a href="https://www.tiktok.com/@lhdv.nz" target="_blank" rel="noopener noreferrer" class="red-btn social-tt">
-            <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor">
-              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-            </svg>
+            <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
             <span>TikTok</span>
           </a>
 
-          <!-- Spotify -->
           <a href="https://open.spotify.com/user/4nmgzdo9ktu2jq8emlcv8j1mv?nd=1&dlsi=ffb446330fa646ab" target="_blank" rel="noopener noreferrer" class="red-btn social-sp">
-            <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor">
-              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-            </svg>
+            <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
             <span>Spotify</span>
           </a>
 
-          <!-- Llamada Telefónica Directa -->
           <a href="tel:+525510455547" class="red-btn social-tel">
-            <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor">
-              <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/>
-            </svg>
+            <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
             <span>Llamar</span>
           </a>
         </div>
@@ -378,7 +442,7 @@
     </div>
   </section>
 
-  <!-- Botón Flotante de WhatsApp con Logo -->
+  <!-- Botón Flotante de WhatsApp -->
   <a href="https://wa.me/loshijosdevilla" target="_blank" rel="noopener noreferrer" class="wa-float">
     <svg viewBox="0 0 24 24" class="social-icon" fill="currentColor">
       <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.126.556 4.122 1.529 5.854l-1.529 5.586 5.724-1.501c1.685.918 3.619 1.441 5.676 1.441 6.627 0 12-5.373 12-12s-5.373-12-11.4-11.38z"/>
