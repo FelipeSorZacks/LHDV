@@ -1,0 +1,741 @@
+:root {
+  --amarillo: #F5C518;
+  --rojo: #D92323;
+  --verde-parrilla: #7CC529;
+  --carbon: #0D0C0C;
+  --gris-oscuro: #171515;
+  --gris-tarjeta: #201D1D;
+  --texto: #F5F5F5;
+  --cafe: #3A2314;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--carbon);
+  color: var(--texto);
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Navegación */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 12px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(13, 12, 12, 0.92);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  border-bottom: 2px solid rgba(245, 197, 24, 0.25);
+}
+
+.logo-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--amarillo);
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.nav-logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-links a {
+  color: var(--texto);
+  text-decoration: none;
+  margin-left: 22px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--amarillo);
+}
+
+/* Hero con Canvas */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px 60px;
+  background: radial-gradient(circle at center, #2e1107 0%, var(--carbon) 75%);
+  overflow: hidden;
+}
+
+#fireCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+  animation: fadeInDown 1s ease-out;
+}
+
+.badge-logo {
+  width: 145px;
+  height: 145px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 35px rgba(245, 197, 24, 0.5);
+  overflow: hidden;
+  background: var(--amarillo);
+  border: 3px solid var(--rojo);
+}
+
+.hero-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge-fallback {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--cafe);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.badge-fallback span {
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  margin-top: 3px;
+}
+
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  color: var(--amarillo);
+  letter-spacing: 3px;
+  line-height: 0.95;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin: 20px auto 35px;
+  max-width: 680px;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+.btn-cta {
+  display: inline-block;
+  background: linear-gradient(45deg, var(--rojo), #ff5500);
+  color: #fff;
+  padding: 16px 36px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 50px;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 25px rgba(217, 35, 35, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-cta:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 35px rgba(245, 197, 24, 0.6);
+}
+
+/* Secciones Generales */
+section {
+  padding: 80px 7%;
+}
+
+.section-title {
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.3rem;
+  color: var(--amarillo);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #b5b5b5;
+  margin-bottom: 45px;
+  font-size: 1rem;
+}
+
+/* TABLÓN DE ANUNCIOS Y OFERTAS */
+.tablon-section {
+  background: linear-gradient(180deg, #161210 0%, var(--carbon) 100%);
+  border-top: 2px dashed rgba(245, 197, 24, 0.35);
+  border-bottom: 2px dashed rgba(245, 197, 24, 0.35);
+  padding: 65px 7%;
+}
+
+.tablon-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.tablon-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.pulse-dot {
+  width: 14px;
+  height: 14px;
+  background-color: var(--rojo);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--rojo);
+  animation: pulse 1.5s infinite;
+}
+
+.tablon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 25px;
+}
+
+.pin-card {
+  background: var(--gris-tarjeta);
+  border-left: 5px solid var(--amarillo);
+  border-radius: 12px;
+  padding: 25px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pin-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(245, 197, 24, 0.15);
+}
+
+.pin-badge {
+  display: inline-block;
+  background: var(--rojo);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  letter-spacing: 0.8px;
+}
+
+.pin-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: var(--amarillo);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.pin-card p {
+  font-size: 0.92rem;
+  color: #ddd;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.pin-meta, .pin-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--verde-parrilla);
+  text-decoration: none;
+}
+
+/* PAQUETES CON PESTAÑAS */
+.tabs-paquetes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 35px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: var(--gris-oscuro);
+  color: #fff;
+  border: 2px solid rgba(245, 197, 24, 0.3);
+  padding: 14px 30px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 1.5px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tab-btn.active, .tab-btn:hover {
+  background: var(--amarillo);
+  color: var(--carbon);
+  border-color: var(--amarillo);
+  box-shadow: 0 0 25px rgba(245, 197, 24, 0.4);
+}
+
+.paquete-panel {
+  display: none;
+  background: var(--gris-oscuro);
+  border: 1px solid rgba(245, 197, 24, 0.25);
+  border-radius: 20px;
+  padding: 40px;
+  animation: fadeIn 0.5s ease;
+}
+
+.paquete-panel.active {
+  display: block;
+}
+
+.paquete-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 25px;
+  margin-bottom: 30px;
+}
+
+.paquete-intro h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.6rem;
+  color: #fff;
+  margin: 8px 0;
+}
+
+.paquete-intro p {
+  max-width: 720px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.servicio-badge {
+  background: rgba(124, 197, 41, 0.12);
+  border: 1px solid var(--verde-parrilla);
+  padding: 15px 22px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.servicio-badge strong {
+  display: block;
+  color: var(--verde-parrilla);
+  font-size: 1.2rem;
+}
+
+.servicio-badge span {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+.menu-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.menu-box {
+  background: var(--gris-tarjeta);
+  padding: 22px;
+  border-radius: 14px;
+  border-top: 3px solid var(--amarillo);
+}
+
+.menu-box h4 {
+  color: var(--amarillo);
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.menu-box ul {
+  list-style: none;
+}
+
+.menu-box ul li {
+  font-size: 0.9rem;
+  color: #ddd;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+/* Precios en Grid */
+.precios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.precio-tier {
+  background: #121010;
+  border: 1px solid rgba(124, 197, 41, 0.4);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.precio-tier span {
+  display: block;
+  font-size: 0.82rem;
+  color: #bbb;
+  margin-bottom: 5px;
+}
+
+.precio-tier strong {
+  color: var(--verde-parrilla);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.extras-banner {
+  background: rgba(245, 197, 24, 0.08);
+  border: 1px solid rgba(245, 197, 24, 0.3);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.extras-banner h4 {
+  color: var(--amarillo);
+  margin-bottom: 10px;
+}
+
+.extras-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 0.9rem;
+  color: #eee;
+}
+
+.nota-importacion {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.88rem;
+  color: #aaa;
+}
+
+/* COTIZADOR INTERACTIVO */
+.cotizador-section {
+  background: #121010;
+}
+
+.calculadora-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--gris-oscuro);
+  border: 2px solid var(--amarillo);
+  border-radius: 20px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+  align-items: center;
+}
+
+.calc-controls label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--amarillo);
+}
+
+.calc-controls select, .calc-controls input[type="range"] {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.calc-controls select {
+  padding: 12px;
+  background: var(--carbon);
+  color: #fff;
+  border: 1px solid var(--amarillo);
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.check-item {
+  font-weight: 400 !important;
+  color: #ddd !important;
+  font-size: 0.9rem;
+  margin-bottom: 8px !important;
+  cursor: pointer;
+}
+
+.calc-resultado {
+  text-align: center;
+  background: var(--carbon);
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.calc-resultado h3 {
+  font-size: 1.8rem;
+  color: var(--verde-parrilla);
+  margin: 5px 0 15px;
+}
+
+.calc-resultado h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.4rem;
+  color: var(--amarillo);
+  margin: 5px 0 15px;
+}
+
+.aviso-min {
+  font-size: 0.8rem;
+  color: #ff6b6b;
+  margin-bottom: 15px;
+}
+
+/* Tarjetas de Experiencias */
+.grid-servicios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: var(--gris-oscuro);
+  border: 1px solid rgba(245, 197, 24, 0.15);
+  border-radius: 16px;
+  padding: 30px 24px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--amarillo);
+}
+
+.tag-minimo {
+  display: inline-block;
+  background: rgba(245, 197, 24, 0.15);
+  color: var(--amarillo);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #ccc;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.btn-card {
+  display: inline-block;
+  background: var(--rojo);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: background 0.3s;
+}
+
+.btn-card:hover {
+  background: #b51b1b;
+}
+
+/* Contacto y Botones de Redes con Logos */
+.info-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  background: var(--gris-oscuro);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(245, 197, 24, 0.2);
+}
+
+.sub-dorado {
+  color: var(--amarillo);
+  margin-bottom: 12px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.horario-lista {
+  list-style: none;
+}
+
+.horario-lista li {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.redes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 12px;
+}
+
+.red-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gris-tarjeta);
+  color: var(--texto);
+  padding: 12px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 1px solid rgba(245, 197, 24, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.social-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.red-btn:hover {
+  transform: translateY(-4px);
+  color: #fff;
+}
+
+.red-btn:hover .social-icon {
+  transform: scale(1.15);
+}
+
+/* Colores Oficiales al pasar el cursor (Hover) */
+.social-wa:hover {
+  background: #25D366;
+  border-color: #25D366;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+}
+
+.social-ig:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-color: #e6683c;
+  box-shadow: 0 8px 20px rgba(220, 39, 67, 0.4);
+}
+
+.social-fb:hover {
+  background: #1877F2;
+  border-color: #1877F2;
+  box-shadow: 0 8px 20px rgba(24, 119, 242, 0.4);
+}
+
+.social-tt:hover {
+  background: #000000;
+  border-color: #00f2fe;
+  box-shadow: -3px 3px 15px rgba(254, 44, 85, 0.45), 3px -3px 15px rgba(0, 242, 254, 0.45);
+}
+
+.social-sp:hover {
+  background: #1DB954;
+  border-color: #1DB954;
+  box-shadow: 0 8px 20px rgba(29, 185, 84, 0.35);
+}
+
+.social-tel:hover {
+  background: var(--amarillo);
+  color: var(--carbon);
+  border-color: var(--amarillo);
+  box-shadow: 0 8px 20px rgba(245, 197, 24, 0.4);
+}
+
+/* Botón Flotante de WhatsApp */
+.wa-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #25D366;
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 50px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wa-float:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.65);
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.82rem;
+  color: #777;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
