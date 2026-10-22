@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Menús y Precios | Los Hijos de Villa</title>
+<link rel="icon" type="image/png" href="Imagenes/Logo/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&family=Yellowtail&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="extra.css">
+</head><body>
+<div class="noise-overlay"></div><canvas id="fireCanvas" aria-hidden="true"></canvas>
+<nav>
+ <a href="index.html" class="logo-nav"><img src="Imagenes/Logo/logo.png" alt="Logo" class="nav-logo-img" onerror="this.style.display='none'"><div>LOS HIJOS DE VILLA<span class="nav-sub">MENÚS Y PRECIOS</span></div></a>
+ <button class="nav-toggle" aria-expanded="false">☰ MENÚ</button>
+ <div class="nav-links"><a href="#paquetes">Paquetes</a><a href="#cotizador">Cotizador</a><a href="#tienda">Salsas y compras</a><a href="index.html">← Inicio</a></div>
+</nav>
+<header class="hero" style="min-height:40vh"><div class="hero-bg-photo"></div><div class="hero-content">
+ <span class="cursive-accent">Tu cotización, a tu medida</span><h1 class="tilted-title">MENÚS Y PRECIOS</h1></div></header>
+<div class="marquee-bar"><div class="marquee-track"><span>CDMX · HIDALGO · EDOMEX · TLAXCALA · PUEBLA · QUERÉTARO · MÁS DE 100 KM CON COSTO EXTRA</span><span class="sep">◆</span><span>CDMX · HIDALGO · EDOMEX · TLAXCALA · PUEBLA · QUERÉTARO · MÁS DE 100 KM CON COSTO EXTRA</span></div></div>
+
+<main class="fondo-madera">
+<section id="paquetes"><div class="wrap">
+ <span class="eyebrow">ELIGE TU PAQUETE</span>
+ <h2 class="title-left">PARRILLA A DOMICILIO</h2>
+ <p style="color:#bbb;margin:-6px 0 22px;font-size:.85rem">a domicilio</p>
+ <div class="tabs-paquetes" id="tabs"></div><div id="panel"></div>
+ <p class="nota-importacion">* Carne de importación (USDA Choice, High Choice, Silver Sterling, Angus o Black Angus), grupos mayores/menores, cobertura foránea, meseros, barman, cristalería y bebidas: cotización directa.</p>
+</div></section>
+
+<section id="cotizador"><div class="wrap">
+ <span class="eyebrow">PRESUPUESTO AL INSTANTE</span><h2 class="title-left">ARMA TU COTIZACIÓN</h2>
+ <div class="calculadora-card">
+  <div class="calc-controls">
+   <label for="selP">1. Paquete:</label><select id="selP"></select>
+   <label for="rng">2. Invitados: <strong id="nInv">50</strong></label><input type="range" id="rng" min="20" max="200" value="50">
+   <label>3. Entradas (elige cuántas):</label>
+   <div class="qty"><span>Tuétano ($75 c/u)</span><input type="number" id="qTue" min="0" value="0"></div>
+   <div class="qty"><span>Molleja de ternera ($55 c/u)</span><input type="number" id="qMol" min="0" value="0"></div>
+  </div>
+  <div class="calc-resultado">
+   <span>Costo por invitado:</span><h3 id="pPer">—</h3>
+   <span>Total estimado:</span><h2 id="pTot">—</h2><p id="aviso" class="aviso-min"></p>
+   <button class="btn-cta full-width-btn btn-sm" id="addPaq">Añadir al carrito</button>
+  </div>
+ </div>
+</div></section>
+
+<section id="tienda"><div class="wrap">
+ <span class="eyebrow">COMPRAS</span><h2 class="title-left">SALSAS Y EXTRAS</h2>
+ <div class="grid-cards" id="productos"></div>
+</div></section>
+</main>
+
+<button class="cart-fab" id="fab">🛒 Carrito (<span id="cnt">0</span>)</button>
+<aside class="cart-panel" id="cart"><button class="cart-close" id="cerrar">✕</button><h3 class="sub-dorado">Tu carrito</h3>
+ <div id="items"></div><h3 id="tot" style="color:var(--amarillo)"></h3>
+ <a id="wa" class="btn-cta full-width-btn" target="_blank" rel="noopener" href="#">Enviar pedido por WhatsApp</a></aside>
+<div class="parrilla-footer" aria-hidden="true"><div class="brasas"></div><div class="rejilla"></div></div>
+<footer><p>© 2026 Los Hijos de Villa - Parrilla de Barrio.</p></footer>
+<script src="comun.js"></script>
+<script src="menu.js"></script>
+</body></html>

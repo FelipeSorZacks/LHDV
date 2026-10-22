@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Los Hijos de Villa | Parrilla de Barrio</title>
+<link rel="icon" type="image/png" href="Imagenes/Logo/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&family=Yellowtail&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="extra.css">
+</head><body>
+<div class="noise-overlay"></div><canvas id="fireCanvas" aria-hidden="true"></canvas>
+<nav>
+ <a href="#" class="logo-nav"><img src="Imagenes/Logo/logo.png" alt="Logo" class="nav-logo-img" onerror="this.style.display='none'"><div>LOS HIJOS DE VILLA<span class="nav-sub">PARRILLA DE BARRIO</span></div></a>
+ <button class="nav-toggle" aria-expanded="false" aria-label="Abrir menú">☰ MENÚ</button>
+ <div class="nav-links">
+  <a href="#servicios">Servicios</a><a href="#salsas">Salsas</a><a href="#visitantes">Visitantes</a><a href="#resenas">Reseñas</a><a href="#faq">Preguntas</a><a href="#nosotros">Nosotros</a>
+  <a class="cta-nav" href="https://wa.me/525510455547?text=Hola,%20quiero%20cotizar%20mi%20evento" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+ </div>
+</nav>
+
+<header class="hero">
+ <div class="hero-bg-photo"></div>
+ <div class="hero-content">
+  <div class="badge-logo"><img src="Imagenes/Logo/logo.png" alt="Los Hijos de Villa" class="hero-logo-img"></div>
+  <span class="cursive-accent">Experiencia gastronómica a fuego vivo</span>
+  <h1 class="tilted-title">EL ARTE DEL ASADO<br>EN TU EVENTO</h1>
+  <p class="corto">Leña de encino, carbón y carne Prime Sonorense en tus celebraciones y eventos corporativos.</p>
+  <div class="hero-btns">
+   <a href="#servicios" class="btn-cta">Conoce nuestros servicios</a>
+   <a href="https://wa.me/525510455547?text=Hola,%20quiero%20cotizar%20mi%20evento" target="_blank" rel="noopener" class="btn-outline">Cotizar en WhatsApp</a>
+  </div>
+ </div>
+</header>
+
+<div class="marquee-bar"><div class="marquee-track">
+ <span>CDMX Y ÁREA METROPOLITANA</span><span class="sep">◆</span><span>HIDALGO</span><span class="sep">◆</span><span>EDOMEX</span><span class="sep">◆</span><span>TLAXCALA</span><span class="sep">◆</span><span>PUEBLA</span><span class="sep">◆</span><span>QUERÉTARO</span><span class="sep">◆</span><span>MÁS DE 100 KM: CON COSTO EXTRA</span><span class="sep">◆</span>
+ <span>CDMX Y ÁREA METROPOLITANA</span><span class="sep">◆</span><span>HIDALGO</span><span class="sep">◆</span><span>EDOMEX</span><span class="sep">◆</span><span>TLAXCALA</span><span class="sep">◆</span><span>PUEBLA</span><span class="sep">◆</span><span>QUERÉTARO</span><span class="sep">◆</span><span>MÁS DE 100 KM: CON COSTO EXTRA</span><span class="sep">◆</span>
+</div></div>
+
+<main class="fondo-madera">
+<section id="tablon">
+ <div class="section-header-left"><div class="live-indicator"><span class="pulse-dot"></span> EN CARTELERA</div>
+ <h2 class="title-with-brush">PRÓXIMA PARADA</h2></div>
+ <div class="parada">
+  <div><div class="pin-badge">🔥 NOS VEMOS AQUÍ</div><h3>Ferias y Festivales Gastronómicos</h3>
+  <p>Prueba en directo nuestros cortes al asador, sliders ahumados y toda la línea de Salsa Macha.</p>
+  <a href="https://www.instagram.com/lhdv.nz/" target="_blank" rel="noopener" class="btn-cta">Ver ubicaciones en @lhdv.nz</a></div>
+  <img class="flyer" src="Imagenes/Anuncios/proxima-parada.jpg" alt="Próximo evento" onerror="this.closest('.parada').classList.add('sin-foto');this.remove()">
+ </div>
+ <div class="dos-col">
+  <div class="pin-card featured-pin"><div class="pin-badge">🎁 PROMOCIÓN EXCLUSIVA</div><h3>Beneficio al reservar tu fecha</h3>
+   <p>Aparta con un depósito (se abona al total) y pregunta por la promoción vigente.</p>
+   <a class="pin-link" href="https://wa.me/525510455547?text=Hola,%20quiero%20conocer%20la%20promoción%20vigente" target="_blank" rel="noopener">Reclamar por WhatsApp →</a></div>
+  <div class="pin-card"><div class="pin-badge">🌶️ HECHO A MANO</div><h3>Salsa Macha "Las Hijas de Villa"</h3>
+   <p>Nuestra salsa artesanal, elaborada 100% a mano.</p><a class="pin-link" href="#salsas">Ver salsas →</a></div>
+ </div>
+</section>
+
+<section id="servicios">
+ <div class="section-header-left"><span class="eyebrow">LO QUE HACEMOS</span><h2 class="title-with-brush">NUESTROS <span class="cursive-inline">Servicios</span></h2></div>
+ <div class="grid-cards cuatro">
+  <div class="foto-card"><div class="img" style="background-image:url('Imagenes/Servicios/serv-clasica.jpg')"></div><div class="txt"><h3>Parrilla Clásica</h3><p>Bufé premium a leña de encino y carbón.</p></div></div>
+  <div class="foto-card"><div class="img" style="background-image:url('Imagenes/Servicios/serv-tradicional.jpg')"></div><div class="txt"><h3>Parrilla Tradicional</h3><p>Asado al carbón, práctico y completo.</p></div></div>
+  <div class="foto-card"><div class="img" style="background-image:url('Imagenes/Servicios/serv-ejecutivo.jpg')"></div><div class="txt"><h3>Parrilla Ejecutiva</h3><p>Pensada para eventos corporativos.</p></div></div>
+  <div class="foto-card"><div class="img" style="background-image:url('Imagenes/Servicios/serv-exotico.jpg')"></div><div class="txt"><h3>Parrilla Exótica</h3><p>Jabalí, búfalo, venado y más.</p></div></div>
+ </div>
+ <details style="max-width:1100px;margin:24px auto 0"><summary>Más especialidades</summary>
+  <div><b>Asado criollo</b> · <b>Hamburguesas y sándwiches</b> · <b>Talleres de integración</b> para empresas.</div></details>
+ <p style="text-align:center;margin-top:26px"><a class="btn-cta" href="https://wa.me/525510455547?text=Hola,%20me%20interesa%20su%20servicio,%20¿me%20pasan%20menús%20y%20costos?" target="_blank" rel="noopener">Pedir menús y costos</a></p>
+</section>
+
+<section id="salsas">
+ <div class="section-header-left"><span class="eyebrow">HECHAS A MANO</span><h2 class="title-with-brush">NUESTRAS <span class="cursive-inline">Salsas</span></h2></div>
+ <div class="wrap salsas-pub">
+  <img src="Imagenes/Salsas/salsa-7-SaborPasionYTradicion.jpeg" alt="Salsa Macha Las Hijas de Villa: seis sabores" loading="lazy">
+  <div class="chips"><span>Tres Chiles y Semillas</span><span>Cacao y Chipotle</span><span>Ceniza de Jalapeño</span><span>Jamaica y Morita</span><span>Habanero y Ajonjolí</span><span>Chapulín y Chile de Árbol</span></div>
+ </div>
+</section>
+
+<section id="visitantes">
+ <div class="section-header-left"><span class="eyebrow">HAN PROBADO LA PARRILLA</span><h2 class="title-with-brush">VISITANTES <span class="cursive-inline">Famosos</span></h2></div>
+ <div class="grid-cards">
+  <div class="foto-card"><div class="img" style="background-image:url('Imagenes/Famosos/famoso-1.jpg')"></div><div class="txt"><h3>Nombre</h3><p>Evento / fecha</p></div></div>
+  <div class="foto-card"><div class="img" style="background-image:url('Imagenes/Famosos/famoso-2.jpg')"></div><div class="txt"><h3>Nombre</h3><p>Evento / fecha</p></div></div>
+  <div class="foto-card"><div class="img" style="background-image:url('Imagenes/Famosos/famoso-3.jpg')"></div><div class="txt"><h3>Nombre</h3><p>Evento / fecha</p></div></div>
+ </div>
+</section>
+
+<section id="resenas">
+ <div class="section-header-left"><span class="eyebrow">LO QUE DICEN</span><h2 class="title-with-brush">RESEÑAS</h2></div>
+ <div class="grid-cards">
+  <div class="pin-card resena"><div class="estrellas">★★★★★</div><p>"Texto de la reseña del cliente."</p><small>— Nombre, tipo de evento</small></div>
+  <div class="pin-card resena"><div class="estrellas">★★★★★</div><p>"Texto de la reseña del cliente."</p><small>— Nombre, tipo de evento</small></div>
+  <div class="pin-card resena"><div class="estrellas">★★★★★</div><p>"Texto de la reseña del cliente."</p><small>— Nombre, tipo de evento</small></div>
+ </div>
+ <p style="text-align:center;margin-top:20px"><a class="btn-outline" href="https://www.facebook.com/LHDV.NZ" target="_blank" rel="noopener">Deja tu reseña en Facebook</a></p>
+</section>
+
+<section id="faq">
+ <div class="section-header-left"><span class="eyebrow">DUDAS COMUNES</span><h2 class="title-with-brush">PREGUNTAS <span class="cursive-inline">Frecuentes</span></h2></div>
+ <div class="wrap">
+  <details><summary>¿Cómo cotizo mi evento?</summary><div>Escríbenos por WhatsApp con fecha, lugar y número de invitados; te mandamos el link con menús y costos.</div></details>
+  <details><summary>¿Con cuánto tiempo debo reservar?</summary><div>Entre más anticipación, mejor. Se aparta con un depósito que se abona al total.</div></details>
+  <details><summary>¿A qué zonas llegan?</summary><div>CDMX y área metropolitana, Hidalgo, Edomex, Tlaxcala, Puebla y Querétaro. Más de 100 km, con costo extra.</div></details>
+  <details><summary>¿Cuántas personas mínimo?</summary><div>Depende del paquete; te lo indicamos al cotizar.</div></details>
+  <details><summary>¿Llevan todo el equipo?</summary><div>Sí: montaje profesional, asadores y atención personalizada.</div></details>
+ </div>
+</section>
+
+<section id="nosotros" class="nosotros-section">
+ <div class="nosotros-grid">
+  <div class="marco-madera"><div class="foto"><img src="Imagenes/Nosotros/foto-familia.jpg" alt="Familia Los Hijos de Villa" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="foto-fallback">foto-familia.jpg</div></div></div>
+  <div class="nosotros-texto"><span class="eyebrow">NUESTRA HISTORIA</span><h2 class="title-left">MÁS SOBRE <span class="cursive-inline">Nosotros</span></h2>
+   <p class="leyenda">"Lo que se hace en familia, se cocina a fuego lento."</p>
+   <p>Somos un negocio familiar. Aprendimos a asar entre parientes y vecinos, y hoy llevamos esa parrilla de barrio a tu evento.</p>
+   <a href="https://wa.me/525510455547?text=Hola,%20quiero%20cotizar%20mi%20evento" target="_blank" rel="noopener" class="btn-cta">Platiquemos de tu evento</a></div>
+ </div>
+</section>
+
+<section id="contacto"><div class="info-container">
+ <div><h3 class="sub-dorado">Horarios</h3><ul class="horario-lista">
+  <li><span>Lunes a Viernes</span><strong>9:00 am - 11:00 pm</strong></li><li><span>Sábado</span><strong>11:00 am - 10:00 pm</strong></li><li><span>Domingo</span><strong>11:00 am - 7:00 pm</strong></li></ul></div>
+ <div><h3 class="sub-dorado">Contacto</h3><p style="color:#ccc;margin-bottom:14px">WhatsApp y teléfono: <strong>+52 1 55 1045 5547</strong></p>
+  <div class="redes-grid">
+   <a class="red-btn social-wa" href="https://wa.me/525510455547" target="_blank" rel="noopener">WhatsApp</a>
+   <a class="red-btn social-ig" href="https://www.instagram.com/lhdv.nz/" target="_blank" rel="noopener">Instagram</a>
+   <a class="red-btn social-fb" href="https://www.facebook.com/LHDV.NZ" target="_blank" rel="noopener">Facebook</a>
+   <a class="red-btn social-tt" href="https://www.tiktok.com/@lhdv.nz" target="_blank" rel="noopener">TikTok</a>
+   <a class="red-btn social-tel" href="tel:+525510455547">Llamar</a></div></div>
+</div></section>
+</main>
+
+<a href="https://wa.me/525510455547" target="_blank" rel="noopener" class="wa-float"><span>Cotizar en WhatsApp</span></a>
+<div class="parrilla-footer" aria-hidden="true"><div class="brasas"></div><div class="rejilla"></div></div>
+<footer><p>© 2026 Los Hijos de Villa - Parrilla de Barrio.</p></footer>
+<script src="comun.js"></script>
+</body></html>

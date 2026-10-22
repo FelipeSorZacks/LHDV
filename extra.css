@@ -1,0 +1,79 @@
+/* ===== v3: se carga DESPUÉS de styles.css ===== */
+body{font-size:16px}
+.wrap{max-width:1100px;margin:0 auto}
+/* Menú: botón con texto para que se entienda */
+.nav-toggle{width:auto;height:44px;padding:0 16px;font:700 .9rem Montserrat,sans-serif;letter-spacing:1px;border-radius:50px}
+.nav-links a.cta-nav{color:var(--carbon);background:var(--amarillo);padding:10px 16px;border-radius:50px;margin-left:22px}
+@media(max-width:1000px){.nav-links a.cta-nav{margin:12px 0 0;text-align:center}}
+/* Logo original, sin recorte circular */
+.badge-logo{width:auto;height:auto;border:0;background:none;box-shadow:none;border-radius:0;overflow:visible}
+.hero-logo-img{width:min(240px,60vw);height:auto;object-fit:contain;filter:drop-shadow(0 0 28px rgba(245,197,24,.45))}
+.hero-btns .btn-outline{background:transparent}
+/* Fondo de madera difuminada debajo de la franja roja */
+.fondo-madera{position:relative;background:#1a110b url('Imagenes/Fondos/fondo-mesa.jpg') center top/100% auto repeat-y}
+.fondo-madera::before{content:"";position:absolute;inset:0;background:rgba(11,8,6,.62);backdrop-filter:blur(2px);pointer-events:none}
+.fondo-madera>*{position:relative}
+.fondo-madera section{background:transparent}
+.fondo-madera .tablon-section,.fondo-madera .nosotros-section,.fondo-madera .cotizador-section{background:transparent;border:0}
+/* Próxima parada a lo ancho */
+.parada{max-width:1100px;margin:0 auto 24px;display:grid;grid-template-columns:1fr minmax(200px,420px);gap:28px;align-items:center;background:linear-gradient(135deg,#2a1208,#1c1817);border:1px solid rgba(245,197,24,.4);border-radius:18px;padding:32px}
+.parada h3{font-family:'Bebas Neue';font-size:2.4rem;color:#fff}
+.parada p{color:#ddd;line-height:1.6;margin:8px 0 16px}
+.parada .flyer{display:block;width:auto;max-width:100%;max-height:560px;height:auto;justify-self:center;border-radius:12px;border:2px solid rgba(245,197,24,.4)}
+.parada.sin-foto{grid-template-columns:1fr}
+.dos-col{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+/* Desplegables */
+details{background:var(--gris-tarjeta);border:1px solid rgba(245,197,24,.25);border-radius:12px;margin-bottom:10px;overflow:hidden}
+summary{cursor:pointer;padding:15px 18px;font-weight:700;color:var(--amarillo);list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::after{content:"＋";flex-shrink:0}
+details[open] summary::after{content:"－"}
+details>*:not(summary){padding:0 18px 16px;color:#ddd;line-height:1.6;font-size:.92rem}
+details ul{list-style:none;padding-left:18px}details li{padding:5px 0;border-bottom:1px dashed rgba(255,255,255,.08)}
+.ventanas{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+.ventanas details{margin:0}
+/* Tiempos */
+.tiempos{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 4px}
+.tiempos div{background:rgba(124,197,41,.1);border:1px solid var(--verde-parrilla);border-radius:12px;padding:10px 14px;font-size:.82rem;color:#ddd;flex:1 1 150px}
+.tiempos b{display:block;color:var(--verde-parrilla);font-size:1.05rem}
+/* Grids de tarjetas */
+.grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto}
+.foto-card{background:var(--madera-oscura);border:1px solid rgba(245,197,24,.2);border-radius:14px;overflow:hidden}
+.foto-card .img{aspect-ratio:4/3;background:#2a1a10 center/cover;display:flex;align-items:center;justify-content:center;color:#777;font-size:.8rem}
+.foto-card .txt{padding:16px}.foto-card h3{font-family:'Bebas Neue';font-size:1.6rem}
+.foto-card p{color:#ccc;font-size:.9rem;line-height:1.5}
+.estrellas{color:var(--amarillo);letter-spacing:2px}
+.resena small{color:#999}
+/* Cotizador / carrito */
+.qty{display:flex;align-items:center;gap:10px;margin-bottom:12px;color:#ddd;font-size:.92rem}
+.qty input{width:80px;padding:9px;background:var(--carbon);color:#fff;border:1px solid var(--amarillo);border-radius:8px;font-size:1rem}
+.cart-fab{position:fixed;left:16px;bottom:22px;z-index:1000;background:var(--amarillo);color:var(--carbon);border:0;padding:13px 18px;border-radius:50px;font-weight:800;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+.cart-panel{position:fixed;top:0;right:0;height:100%;width:min(380px,100%);background:#120f0d;border-left:2px solid var(--amarillo);z-index:1100;padding:22px;transform:translateX(100%);transition:transform .3s;overflow:auto;display:flex;flex-direction:column;gap:12px}
+.cart-panel.open{transform:none}
+.cart-item{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(255,255,255,.1);padding:8px 0;font-size:.9rem}
+.cart-item button,.cart-close{background:none;border:0;color:#ff6b6b;cursor:pointer;font-size:1rem}
+.cart-close{color:#fff;align-self:flex-end;font-size:1.5rem}
+.tiers-note{color:#aaa;font-size:.85rem}
+.btn-sm{border:0;cursor:pointer;font-family:inherit}
+@media(max-width:700px){
+ body{font-size:15px}
+ .parada,.dos-col,.ventanas{grid-template-columns:1fr}
+ .hero p,.lead-text{display:none}
+ .hero p.corto{display:block}
+ section{padding:44px 5%}
+}
+@media(min-width:701px){.mostrar-movil{display:none}}
+
+/* Sin huecos: 3 tarjetas = 3 en fila o 1 columna; 4 tarjetas = 4, 2x2 o 1 */
+.grid-cards.cuatro{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.grid-cards.cuatro{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.grid-cards{grid-template-columns:1fr}.grid-cards.cuatro{grid-template-columns:repeat(2,1fr)}.grid-cards.cuatro .txt{padding:12px}.grid-cards.cuatro p{display:none}}
+.precios-grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:700px){.precios-grid{grid-template-columns:repeat(2,1fr)}}
+.redes-grid{display:flex;flex-wrap:wrap}.redes-grid .red-btn{flex:1 1 140px;justify-content:center}
+@media(max-width:700px){.parada{grid-template-columns:1fr;padding:22px}}
+
+.salsas-pub img{display:block;width:100%;max-width:640px;margin:0 auto 18px;border-radius:14px;border:2px solid rgba(245,197,24,.35)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.chips span{background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.4);color:var(--amarillo);padding:8px 14px;border-radius:50px;font-size:.85rem;font-weight:700}
+.foto-card .prod{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
+.foto-card select{width:100%;padding:10px;margin:8px 0;background:var(--carbon);color:#fff;border:1px solid var(--amarillo);border-radius:8px;font-size:.95rem}

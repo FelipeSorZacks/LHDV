@@ -145,7 +145,7 @@ nav {
 .hero-bg-photo {
   position: absolute;
   inset: 0;
-  background-image: url('fondo-asador.jpg');
+  background-image: url('Imagenes/Fondos/fondo-asador.jpg');
   background-size: cover;
   background-position: center;
   opacity: 0.28;
