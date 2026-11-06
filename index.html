@@ -3,7 +3,7 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Los Hijos de Villa | Parrilla de Barrio</title>
 <link rel="icon" type="image/png" href="Imagenes/Logo/logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&family=Yellowtail&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@700&family=Barlow+Condensed:ital,wght@1,700;1,800&family=Hurricane&family=Poppins:wght@400;600;700&family=Yellowtail&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="extra.css">
 </head><body>
 <div class="noise-overlay"></div><canvas id="fireCanvas" aria-hidden="true"></canvas>
@@ -12,27 +12,25 @@
  <button class="nav-toggle" aria-expanded="false" aria-label="Abrir menú">☰ MENÚ</button>
  <div class="nav-links">
   <a href="#servicios">Servicios</a><a href="#salsas">Salsas</a><a href="#visitantes">Visitantes</a><a href="#resenas">Reseñas</a><a href="#faq">Preguntas</a><a href="#nosotros">Nosotros</a>
-  <a class="cta-nav" href="https://wa.me/525510455547?text=Hola,%20quiero%20cotizar%20mi%20evento" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+  <a class="cta-nav" href="https://wa.me/525510455547?text=Hola,%20quiero%20cotizar%20mi%20evento" target="_blank" rel="noopener">Cotiza ahora por WhatsApp</a>
  </div>
 </nav>
 
 <header class="hero">
- <div class="hero-bg-photo"></div>
+ <div class="hero-bg-photo hero-slides" id="heroSlides"></div>
  <div class="hero-content">
   <div class="badge-logo"><img src="Imagenes/Logo/logo.png" alt="Los Hijos de Villa" class="hero-logo-img"></div>
   <span class="cursive-accent">Experiencia gastronómica a fuego vivo</span>
   <h1 class="tilted-title">EL ARTE DEL ASADO<br>EN TU EVENTO</h1>
-  <p class="corto">Leña de encino, carbón y carne Prime Sonorense en tus celebraciones y eventos corporativos.</p>
   <div class="hero-btns">
    <a href="#servicios" class="btn-cta">Conoce nuestros servicios</a>
-   <a href="https://wa.me/525510455547?text=Hola,%20quiero%20cotizar%20mi%20evento" target="_blank" rel="noopener" class="btn-outline">Cotizar en WhatsApp</a>
   </div>
  </div>
 </header>
 
 <div class="marquee-bar"><div class="marquee-track">
- <span>CDMX Y ÁREA METROPOLITANA</span><span class="sep">◆</span><span>HIDALGO</span><span class="sep">◆</span><span>EDOMEX</span><span class="sep">◆</span><span>TLAXCALA</span><span class="sep">◆</span><span>PUEBLA</span><span class="sep">◆</span><span>QUERÉTARO</span><span class="sep">◆</span><span>MÁS DE 100 KM: CON COSTO EXTRA</span><span class="sep">◆</span>
- <span>CDMX Y ÁREA METROPOLITANA</span><span class="sep">◆</span><span>HIDALGO</span><span class="sep">◆</span><span>EDOMEX</span><span class="sep">◆</span><span>TLAXCALA</span><span class="sep">◆</span><span>PUEBLA</span><span class="sep">◆</span><span>QUERÉTARO</span><span class="sep">◆</span><span>MÁS DE 100 KM: CON COSTO EXTRA</span><span class="sep">◆</span>
+ <span>CDMX Y ÁREA METROPOLITANA</span><span class="sep">◆</span><span>EDOMEX</span><span class="sep">◆</span><span>HIDALGO</span><span class="sep">◆</span><span>MORELOS</span><span class="sep">◆</span><span>TLAXCALA</span><span class="sep">◆</span><span>PUEBLA</span><span class="sep">◆</span><span>QUERÉTARO</span><span class="sep">◆</span>
+ <span>CDMX Y ÁREA METROPOLITANA</span><span class="sep">◆</span><span>EDOMEX</span><span class="sep">◆</span><span>HIDALGO</span><span class="sep">◆</span><span>MORELOS</span><span class="sep">◆</span><span>TLAXCALA</span><span class="sep">◆</span><span>PUEBLA</span><span class="sep">◆</span><span>QUERÉTARO</span><span class="sep">◆</span>
 </div></div>
 
 <main class="fondo-madera">
@@ -43,7 +41,8 @@
   <div><div class="pin-badge">🔥 NOS VEMOS AQUÍ</div><h3>Ferias y Festivales Gastronómicos</h3>
   <p>Prueba en directo nuestros cortes al asador, sliders ahumados y toda la línea de Salsa Macha.</p>
   <a href="https://www.instagram.com/lhdv.nz/" target="_blank" rel="noopener" class="btn-cta">Ver ubicaciones en @lhdv.nz</a></div>
-  <img class="flyer" src="Imagenes/Anuncios/proxima-parada.jpg" alt="Próximo evento" onerror="this.closest('.parada').classList.add('sin-foto');this.remove()">
+  <details class="flyer-det"><summary>Ver anuncio del evento</summary>
+   <img class="flyer" src="Imagenes/Anuncios/proxima-parada.jpg" alt="Próximo evento" onerror="this.closest('details').remove()"></details>
  </div>
  <div class="dos-col">
   <div class="pin-card featured-pin"><div class="pin-badge">🎁 PROMOCIÓN EXCLUSIVA</div><h3>Beneficio al reservar tu fecha</h3>
@@ -118,7 +117,7 @@
 <section id="contacto"><div class="info-container">
  <div><h3 class="sub-dorado">Horarios</h3><ul class="horario-lista">
   <li><span>Lunes a Viernes</span><strong>9:00 am - 11:00 pm</strong></li><li><span>Sábado</span><strong>11:00 am - 10:00 pm</strong></li><li><span>Domingo</span><strong>11:00 am - 7:00 pm</strong></li></ul></div>
- <div><h3 class="sub-dorado">Contacto</h3><p style="color:#ccc;margin-bottom:14px">WhatsApp y teléfono: <strong>+52 1 55 1045 5547</strong></p>
+ <div><h3 class="sub-dorado">Contacto</h3><p style="color:#ccc;margin-bottom:14px">WhatsApp y teléfono: <strong class="tel">+52 1 55 1045 5547</strong></p>
   <div class="redes-grid">
    <a class="red-btn social-wa" href="https://wa.me/525510455547" target="_blank" rel="noopener">WhatsApp</a>
    <a class="red-btn social-ig" href="https://www.instagram.com/lhdv.nz/" target="_blank" rel="noopener">Instagram</a>
@@ -132,4 +131,16 @@
 <div class="parrilla-footer" aria-hidden="true"><div class="brasas"></div><div class="rejilla"></div></div>
 <footer><p>© 2026 Los Hijos de Villa - Parrilla de Barrio.</p></footer>
 <script src="comun.js"></script>
+<script>
+// Hero con imágenes cambiantes: agrega aquí los archivos que mande el cliente (los que no existan se ignoran)
+(function(){
+ const FOTOS=['Imagenes/Fondos/fondo-asador.jpg','Imagenes/Hero/hero-1.jpg','Imagenes/Hero/hero-2.jpg','Imagenes/Hero/hero-3.jpg','Imagenes/Hero/hero-4.jpg'],SEG=5;
+ const cont=document.getElementById('heroSlides'),ok=[];let n=FOTOS.length;
+ const listo=()=>{if(--n)return;if(!ok.length)return;
+  const capas=FOTOS.filter(f=>ok.includes(f)).map((f,i)=>{const d=document.createElement('div');d.className='slide'+(i?'':' on');d.style.backgroundImage="url('"+f+"')";cont.appendChild(d);return d});
+  if(capas.length<2||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  let k=0;setInterval(()=>{capas[k].classList.remove('on');k=(k+1)%capas.length;capas[k].classList.add('on')},SEG*1000)};
+ FOTOS.forEach(f=>{const i=new Image();i.onload=()=>{ok.push(f);listo()};i.onerror=listo;i.src=f});
+})();
+</script>
 </body></html>

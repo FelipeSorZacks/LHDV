@@ -77,3 +77,45 @@ details ul{list-style:none;padding-left:18px}details li{padding:5px 0;border-bot
 .chips span{background:rgba(245,197,24,.12);border:1px solid rgba(245,197,24,.4);color:var(--amarillo);padding:8px 14px;border-radius:50px;font-size:.85rem;font-weight:700}
 .foto-card .prod{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
 .foto-card select{width:100%;padding:10px;margin:8px 0;background:var(--carbon);color:#fff;border:1px solid var(--amarillo);border-radius:8px;font-size:.95rem}
+
+/* ===== v4 (cliente) ===== */
+/* Nav: que el botón no se encime con el menú */
+.nav-links{display:flex;align-items:center;white-space:nowrap}
+@media(max-width:1200px){
+ .nav-toggle{display:block}
+ .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;white-space:normal;background:rgba(11,10,10,.97);border-bottom:2px solid var(--amarillo);padding:8px 5% 16px}
+ .nav-links.open{display:flex}
+ .nav-links a{margin:0;padding:14px 0;font-size:1rem;border-bottom:1px solid rgba(255,255,255,.08)}
+ .nav-links a.cta-nav{margin:12px 0 0;padding:12px 16px;border:0;text-align:center}
+}
+/* Hero: imágenes cambiantes */
+.hero-slides{background-image:none}
+.hero-slides .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.4s ease}
+.hero-slides .slide.on{opacity:1}
+.hero-btns{margin-top:28px}
+/* Próxima parada: más compacta, anuncio despegable */
+.parada{grid-template-columns:1fr;padding:24px 28px}
+.flyer-det{margin:0;background:rgba(0,0,0,.25)}
+.flyer-det img.flyer{max-height:440px;margin:0 auto}
+
+/* ===== v5: tipografías de marca (Canva) =====
+   Archivos en Imagenes/Fuentes/: ZingRustBase, Breathing, CodecPro-Regular, CodecPro-Bold (.woff2/.otf/.ttf)
+   Si un archivo no existe, se usan las fuentes de respaldo (Bebas Neue, Yellowtail, Montserrat). */
+@font-face{font-family:'Zing Rust Base';src:url('Imagenes/Fuentes/ZingRustBase.woff2') format('woff2'),url('Imagenes/Fuentes/ZingRustBase.otf') format('opentype'),url('Imagenes/Fuentes/ZingRustBase.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Breathing';src:url('Imagenes/Fuentes/Breathing.woff2') format('woff2'),url('Imagenes/Fuentes/Breathing.otf') format('opentype'),url('Imagenes/Fuentes/Breathing.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Codec Pro';src:url('Imagenes/Fuentes/CodecPro-Regular.woff2') format('woff2'),url('Imagenes/Fuentes/CodecPro-Regular.otf') format('opentype'),url('Imagenes/Fuentes/CodecPro-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Codec Pro';src:url('Imagenes/Fuentes/CodecPro-Bold.woff2') format('woff2'),url('Imagenes/Fuentes/CodecPro-Bold.otf') format('opentype'),url('Imagenes/Fuentes/CodecPro-Bold.ttf') format('truetype');font-weight:600 900;font-style:normal;font-display:swap}
+:root{--f-titulo:'Zing Rust Base','Barlow Condensed','Bebas Neue',sans-serif;--f-script:'Breathing','Hurricane','Yellowtail',cursive;--f-texto:'Codec Pro','Poppins','Montserrat',sans-serif;--f-tel:'Open Sans',sans-serif}
+body,.nav-sub,.nav-toggle{font-family:var(--f-texto)}
+.logo-nav,.hero h1,.marquee-track,.title-left,.title-with-brush,.pin-card h3,.video-frame-header,.tab-btn,.paquete-intro h3,.card h3,.sub-dorado,.calc-resultado h2,.badge-fallback,.parada h3,.foto-card h3,#panel h3{font-family:var(--f-titulo)!important}
+.cursive-accent,.cursive-inline,.cursive-btn,.nosotros-texto .leyenda{font-family:var(--f-script)}
+.tel{font-family:var(--f-tel);font-weight:700}
+/* Ajustes para las equivalentes de Google (Barlow Condensed / Hurricane / Poppins) */
+.logo-nav,.hero h1,.marquee-track,.title-left,.title-with-brush,.pin-card h3,.video-frame-header,.tab-btn,.paquete-intro h3,.card h3,.sub-dorado,.calc-resultado h2,.badge-fallback,.parada h3,.foto-card h3,#panel h3{font-style:italic;font-weight:700;text-transform:uppercase}
+.hero h1,.title-left,.title-with-brush{font-weight:800}
+.cursive-accent{font-size:clamp(2rem,4vw,2.9rem)}
+.cursive-inline{font-size:1.35em}
+.nosotros-texto .leyenda{font-size:clamp(2.2rem,5vw,3rem)}
+/* Título del hero: sombra amarilla como en el flyer */
+.tilted-title{text-shadow:4px 5px 0 #726322,0 12px 30px rgba(0,0,0,.9)}
+@media(max-width:700px){.tilted-title{text-shadow:3px 4px 0 #726322,0 8px 20px rgba(0,0,0,.9)}}
